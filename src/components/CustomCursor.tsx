@@ -38,7 +38,7 @@ export default function CustomCursor() {
       <div
         ref={ringRef}
         className="cursor-ring"
-        style={hovering ? { width: 60, height: 60, borderColor: 'rgba(212,175,55,0.8)' } : {}}
+        style={hovering ? { width: 60, height: 60, borderColor: 'rgba(197,247,79,0.6)' } : {}}
       />
     </>
   )
