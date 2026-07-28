@@ -84,12 +84,12 @@ export default function ImmersiveGallery() {
           </Suspense>
 
           {/* Scroll zone — provides scroll distance for camera movement */}
-          <div id="gallery-scroll-zone" style={{ height: '500vh', position: 'relative', zIndex: 2, pointerEvents: 'none' }}>
+          <div id="gallery-scroll-zone" style={{ height: '300vh', position: 'relative', zIndex: 2, pointerEvents: 'none' }}>
             <div style={{ position: 'sticky', top: '20vh', pointerEvents: 'none' }} className="container-arch">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.5, duration: 0.6 }}
+                transition={{ delay: 0.5, duration: 0.4 }}
                 className="max-w-md"
               >
                 <div className="glass-panel p-5 pointer-events-auto">
@@ -110,12 +110,12 @@ export default function ImmersiveGallery() {
           {/* Scroll hint at bottom */}
           <motion.div
             className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[50] flex flex-col items-center gap-2"
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2 }}
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }}
           >
             <span className="text-xs uppercase tracking-widest text-ink-faint">Scroll to explore</span>
             <div className="w-5 h-8 rounded-full border flex items-start justify-center p-1" style={{ borderColor: 'rgba(0,206,202,0.15)' }}>
               <motion.div className="w-1 h-2 rounded-full" style={{ background: '#00ceca' }}
-                animate={{ y: [0, 12, 0] }} transition={{ duration: 1.5, repeat: Infinity }} />
+                animate={{ y: [0, 12, 0] }} transition={{ duration: 1, repeat: Infinity }} />
             </div>
           </motion.div>
         </>
