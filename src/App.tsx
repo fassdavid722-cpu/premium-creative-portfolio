@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
-import { ThemeProvider } from '@/context/ThemeContext'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import CustomCursor from '@/components/CustomCursor'
@@ -13,6 +12,19 @@ import Services from '@/pages/Services'
 import Testimonials from '@/pages/Testimonials'
 import Blog from '@/pages/Blog'
 import Contact from '@/pages/Contact'
+
+function PageWrapper({ children }: { children: React.ReactNode }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.35, ease: 'easeOut' }}
+    >
+      {children}
+    </motion.div>
+  )
+}
 
 function AnimatedRoutes() {
   const location = useLocation()
@@ -32,29 +44,14 @@ function AnimatedRoutes() {
   )
 }
 
-function PageWrapper({ children }: { children: React.ReactNode }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.4, ease: 'easeOut' }}
-    >
-      {children}
-    </motion.div>
-  )
-}
-
 export default function App() {
   return (
-    <ThemeProvider>
-      <BrowserRouter>
-        <ScrollToTop />
-        <CustomCursor />
-        <Navigation />
-        <AnimatedRoutes />
-        <Footer />
-      </BrowserRouter>
-    </ThemeProvider>
+    <BrowserRouter>
+      <ScrollToTop />
+      <CustomCursor />
+      <Navigation />
+      <AnimatedRoutes />
+      <Footer />
+    </BrowserRouter>
   )
 }

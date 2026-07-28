@@ -1,96 +1,61 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { projects } from '@/data/portfolio'
 
-const filters = ['All', 'Branding', 'Social Media', 'Posters', 'Campaigns', 'Logos', 'UI Design']
+const filters = ['All', 'Brand Identity', 'Social Media Design', 'Campaign Visuals', 'Prints & Merch']
 
 export default function Portfolio() {
-  const [activeFilter, setActiveFilter] = useState('All')
-
-  const filtered = activeFilter === 'All'
-    ? projects
-    : projects.filter(p => p.filter === activeFilter)
+  const [active, setActive] = useState('All')
+  const filtered = active === 'All' ? projects : projects.filter(p => p.filter === active)
 
   return (
     <main className="pt-32 pb-24 min-h-screen">
-      <div className="container-lux">
-        {/* Header */}
+      <div className="container-arch">
         <div className="text-center mb-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-sm text-gold font-medium uppercase tracking-wider mb-3"
-          >
-            Portfolio
-          </motion.div>
-          <h1 className="heading-display text-5xl md:text-7xl font-bold mb-6">
-            Selected <span className="text-gradient-gold">Works</span>
+          <p className="section-label">Our Work</p>
+          <h1 className="heading-serif text-5xl md:text-6xl font-bold mb-4">
+            Selected <span className="text-teal-grad">Projects</span>
           </h1>
-          <p className="text-cream/50 text-lg max-w-xl mx-auto">
-            A showcase of projects across branding, social media, campaigns, and digital design.
+          <p className="text-white/50 text-lg max-w-xl mx-auto">
+            Each project here is a story — a brief, a challenge, a process, and a result.
           </p>
         </div>
 
         {/* Filters */}
-        <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
-          {filters.map(filter => (
-            <button
-              key={filter}
-              onClick={() => setActiveFilter(filter)}
-              className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
-                activeFilter === filter
-                  ? 'bg-gold text-ink'
-                  : 'border border-white/10 text-cream/60 hover:border-gold/30 hover:text-gold'
-              }`}
-            >
-              {filter}
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
+          {filters.map(f => (
+            <button key={f} onClick={() => setActive(f)}
+              className="px-5 py-2.5 rounded-full text-sm font-medium transition-all"
+              style={active === f
+                ? { background: '#00ceca', color: '#032f4c' }
+                : { border: '1px solid rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.5)' }}>
+              {f}
             </button>
           ))}
         </div>
 
-        {/* Grid */}
         <AnimatePresence mode="wait">
-          <motion.div
-            key={activeFilter}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            {filtered.map((project, i) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-              >
-                <Link
-                  to={`/portfolio/${project.slug}`}
-                  className="group block relative overflow-hidden rounded-2xl"
-                >
+          <motion.div key={active} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filtered.map((p, i) => (
+              <motion.div key={p.id} initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.08 }}>
+                <Link to={`/portfolio/${p.slug}`} className="group block relative overflow-hidden rounded-2xl">
                   <div className="aspect-[4/3] relative overflow-hidden">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                    />
-                    <div className={`absolute inset-0 bg-gradient-to-t ${project.gradient} opacity-20 group-hover:opacity-40 transition-opacity duration-500`} />
-                    <div className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/40 to-transparent" />
+                    <img src={p.image} alt={p.title} className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700" />
+                    <div className={`absolute inset-0 bg-gradient-to-t ${p.gradient} opacity-20 group-hover:opacity-35 transition-opacity`} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy/95 via-navy/40 to-transparent" />
                   </div>
-
-                  <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-gold/20 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                    <ArrowUpRight size={18} className="text-gold" />
+                  <div className="absolute inset-0 p-5 flex flex-col justify-end">
+                    <span className="text-xs font-semibold uppercase tracking-wider mb-1.5" style={{ color: '#00ceca' }}>{p.category} · {p.year}</span>
+                    <h3 className="heading-serif text-lg font-bold text-white mb-0.5">{p.title}</h3>
+                    <p className="text-white/40 text-sm">{p.client}</p>
                   </div>
-
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <div className="text-xs text-gold font-medium uppercase tracking-wider mb-2">
-                      {project.category} · {project.year}
-                    </div>
-                    <h3 className="heading-display text-xl font-semibold text-cream mb-1">{project.title}</h3>
-                    <p className="text-cream/40 text-sm">{project.client}</p>
+                  <div className="absolute top-4 right-4 w-9 h-9 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                    style={{ background: '#00ceca' }}>
+                    <ArrowRight size={16} className="text-navy" />
                   </div>
                 </Link>
               </motion.div>
@@ -98,11 +63,15 @@ export default function Portfolio() {
           </motion.div>
         </AnimatePresence>
 
-        {filtered.length === 0 && (
-          <div className="text-center py-20 text-cream/40">
-            <p className="text-lg">No projects in this category yet.</p>
-          </div>
-        )}
+        {/* CTA at bottom of portfolio page */}
+        <div className="mt-20 relative overflow-hidden rounded-3xl p-10 md:p-14 text-center border"
+          style={{ borderColor: 'rgba(0,206,202,0.2)', background: 'rgba(0,206,202,0.05)' }}>
+          <h2 className="heading-serif text-3xl md:text-4xl font-bold text-white mb-3">
+            Ready to add your project to this list?
+          </h2>
+          <p className="text-white/50 mb-6">Let's build something worth showing.</p>
+          <Link to="/contact" className="btn-primary">Start A Project <ArrowRight size={16} /></Link>
+        </div>
       </div>
     </main>
   )

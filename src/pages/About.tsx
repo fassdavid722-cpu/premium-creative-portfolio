@@ -1,151 +1,146 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowRight, Award, Briefcase, Star } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
+
+const fadeUp = { initial: { opacity: 0, y: 28 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } }
 
 const skills = [
-  'Brand Identity Design', 'Social Media Design', 'Art Direction', 'Creative Strategy',
-  'Motion Graphics', 'UI/UX Design', 'Typography', 'Visual Storytelling',
-  'Content Strategy', 'Campaign Design', 'Packaging Design', 'Print Design',
+  'Brand Identity Design', 'Social Media Content', 'Art Direction', 'Creative Strategy',
+  'Campaign Design', 'Typography', 'Event Branding', 'Packaging', 'Print Design', 'Visual Storytelling',
 ]
 
-const tools = ['Photoshop', 'Illustrator', 'Figma', 'Canva', 'After Effects', 'AI Tools']
-const toolsColors = ['from-blue-600 to-cyan-500', 'from-orange-600 to-amber-500', 'from-purple-600 to-pink-500', 'from-cyan-500 to-teal-400', 'from-purple-700 to-indigo-500', 'from-emerald-500 to-green-400']
+const tools = [
+  { name: 'Photoshop', color: '#31A8FF' },
+  { name: 'Illustrator', color: '#FF7C00' },
+  { name: 'Figma', color: '#A259FF' },
+  { name: 'Canva', color: '#00C4CC' },
+  { name: 'After Effects', color: '#9999FF' },
+  { name: 'AI Tools', color: '#00ceca' },
+]
 
-const experience = [
-  { year: '2025', role: 'Creative Director', company: 'Aether Studio', desc: 'Leading creative direction for premium brands worldwide.' },
-  { year: '2022', role: 'Senior Designer', company: 'Apex Creative Agency', desc: 'Managed social media design for 30+ enterprise clients.' },
-  { year: '2019', role: 'Visual Designer', company: 'Studio Forma', desc: 'Specialized in brand identity and digital campaign design.' },
-  { year: '2017', role: 'Junior Designer', company: 'Pixel Lab', desc: 'Started the journey in social media and content design.' },
+const timeline = [
+  { year: '2026', role: 'Founder & Creative Director', co: 'Archworks Studio', desc: 'Running a full-service visual design studio — brand identity, social media, and campaign design.' },
+  { year: '2024', role: 'Freelance Visual Designer', co: 'Self-employed', desc: 'Grew a client base across multiple industries — beauty, food, tech, fashion, and events.' },
+  { year: '2021', role: 'Visual Designer', co: 'Freelance · Anambra, Nigeria', desc: 'Started formally building brands and social media systems for Nigerian businesses.' },
 ]
 
 export default function About() {
   return (
     <main className="pt-32 pb-24">
-      <div className="container-lux">
-        {/* Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="text-sm text-gold font-medium uppercase tracking-wider mb-3">About Me</div>
-            <h1 className="heading-display text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              Behind every design is a <span className="text-gradient-gold">strategy</span>
+      <div className="container-arch">
+        {/* Intro */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center mb-24">
+          <motion.div {...fadeUp} transition={{ duration: 0.8 }}>
+            <p className="section-label">About Archworks</p>
+            <h1 className="heading-serif text-4xl md:text-6xl font-bold mb-6 leading-tight">
+              I'm Daniels.<br />
+              <span className="text-teal-grad">Designer. Medic. Builder.</span>
             </h1>
-            <p className="text-lg text-cream/60 leading-relaxed mb-6">
-              I combine creativity, communication, and technology to help brands build meaningful connections. With over 8 years of experience in social media design and brand identity, I've helped 250+ businesses transform their visual presence into a strategic asset.
+            <p className="text-white/60 text-lg leading-relaxed mb-5">
+              I'm Daniels I. Daniels — the founder and creative director of <strong className="text-white">Archworks</strong>. I build visual identities and social media systems that help brands communicate, attract, and convert.
             </p>
-            <p className="text-lg text-cream/60 leading-relaxed mb-8">
-              My approach is simple: understand the business goal first, then create visuals that serve it. Every color, every font, every composition has a purpose — to make your brand impossible to ignore.
+            <p className="text-white/60 text-lg leading-relaxed mb-5">
+              What makes me different? I have a dual background — <strong className="text-white">design and medicine</strong>. That means I approach branding the way a doctor approaches diagnosis: systematically, analytically, and with the end result in mind.
             </p>
-            <Link
-              to="/contact"
-              className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gold text-ink font-semibold hover:bg-gold-light transition-all hover:shadow-2xl hover:shadow-gold/30"
-            >
-              Work With Me
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
+            <p className="text-white/60 text-lg leading-relaxed mb-8">
+              My mission is simple: every brand I touch should make people <span style={{ color: '#00ceca' }}>stop, look, and take action</span>.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Link to="/contact" className="btn-primary">Work With Me <ArrowRight size={16} /></Link>
+              <a href="https://www.behance.net/ikechukwudaniel" target="_blank" rel="noopener noreferrer" className="btn-outline">
+                View Behance
+              </a>
+            </div>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-            className="relative"
-          >
-            <div className="relative rounded-3xl overflow-hidden border border-white/10">
-              <img
-                src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f44?q=80&w=1200"
-                alt="Portrait"
-                className="w-full aspect-[4/5] object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink/50 to-transparent" />
+          <motion.div {...fadeUp} transition={{ duration: 0.7, delay: 0.2 }} className="relative">
+            <div className="rounded-3xl overflow-hidden border border-white/10">
+              <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f44?q=80&w=1200"
+                alt="Daniels I. Daniels" className="w-full aspect-[4/5] object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent" />
             </div>
-            <div className="absolute -bottom-6 -left-6 grid grid-cols-2 gap-4">
-              <div className="bg-ink-card border border-gold/20 rounded-2xl p-4 backdrop-blur-xl">
-                <div className="heading-display text-3xl font-bold text-gradient-gold">250+</div>
-                <div className="text-xs text-cream/40">Projects</div>
+            <div className="absolute -bottom-5 -left-5 grid grid-cols-2 gap-3">
+              <div className="rounded-2xl p-4 border backdrop-blur-xl" style={{ background: 'rgba(3,47,76,0.9)', borderColor: 'rgba(0,206,202,0.2)' }}>
+                <div className="heading-serif text-3xl font-bold text-teal-grad">50+</div>
+                <div className="text-xs text-white/40">Projects</div>
               </div>
-              <div className="bg-ink-card border border-gold/20 rounded-2xl p-4 backdrop-blur-xl">
-                <div className="heading-display text-3xl font-bold text-gradient-gold">8+</div>
-                <div className="text-xs text-cream/40">Years</div>
+              <div className="rounded-2xl p-4 border backdrop-blur-xl" style={{ background: 'rgba(3,47,76,0.9)', borderColor: 'rgba(0,206,202,0.2)' }}>
+                <div className="heading-serif text-3xl font-bold text-teal-grad">30+</div>
+                <div className="text-xs text-white/40">Clients</div>
               </div>
             </div>
           </motion.div>
         </div>
 
-        {/* Skills */}
-        <section className="py-16">
-          <div className="text-center mb-12">
-            <div className="text-sm text-gold font-medium uppercase tracking-wider mb-3">Capabilities</div>
-            <h2 className="heading-display text-3xl md:text-5xl font-bold">Skills & <span className="text-gradient-gold">Expertise</span></h2>
+        {/* Philosophy */}
+        <section className="py-16 border-y border-white/5 mb-16">
+          <div className="max-w-3xl mx-auto text-center">
+            <p className="section-label">The Philosophy</p>
+            <blockquote className="heading-serif text-3xl md:text-4xl font-bold leading-snug">
+              "A logo is not a brand. A colour is not a system. Real design is what happens when strategy meets creativity and produces <span className="text-teal-grad">results that matter</span>."
+            </blockquote>
+            <p className="text-white/40 mt-4">— Daniels I. Daniels, Archworks</p>
           </div>
+        </section>
+
+        {/* Skills */}
+        <section className="py-12 mb-12">
+          <p className="section-label text-center">Capabilities</p>
+          <h2 className="heading-serif text-3xl md:text-4xl font-bold text-center mb-8">Skills & Expertise</h2>
           <div className="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto">
-            {skills.map((skill, i) => (
-              <motion.span
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                className="px-5 py-2.5 rounded-full border border-white/10 text-cream/70 hover:border-gold/30 hover:text-gold hover:bg-gold/5 transition-all text-sm font-medium"
-              >
-                {skill}
+            {skills.map((s, i) => (
+              <motion.span key={i} {...fadeUp} transition={{ delay: i * 0.04 }}
+                className="px-4 py-2 rounded-full text-sm font-medium border border-white/10 text-white/60 hover:border-teal/30 hover:text-white transition-all cursor-default">
+                {s}
               </motion.span>
             ))}
           </div>
         </section>
 
         {/* Tools */}
-        <section className="py-16">
-          <div className="text-center mb-12">
-            <div className="text-sm text-gold font-medium uppercase tracking-wider mb-3">Toolkit</div>
-            <h2 className="heading-display text-3xl md:text-5xl font-bold">Tools I <span className="text-gradient-gold">Use</span></h2>
-          </div>
+        <section className="py-12 mb-12">
+          <p className="section-label text-center">Toolkit</p>
+          <h2 className="heading-serif text-3xl md:text-4xl font-bold text-center mb-8">Tools I Use</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-4xl mx-auto">
-            {tools.map((tool, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="group relative p-6 rounded-2xl border border-white/5 hover:border-gold/20 transition-all text-center overflow-hidden"
-              >
-                <div className={`absolute inset-0 bg-gradient-to-br ${toolsColors[i]} opacity-0 group-hover:opacity-10 transition-opacity`} />
-                <div className="relative z-10 font-semibold text-cream group-hover:text-gold transition-colors">{tool}</div>
+            {tools.map((t, i) => (
+              <motion.div key={i} {...fadeUp} transition={{ delay: i * 0.08 }}
+                className="card-arch p-5 text-center group hover:border-teal/20">
+                <div className="w-10 h-10 rounded-xl mx-auto mb-3 flex items-center justify-center text-sm font-bold"
+                  style={{ background: `${t.color}22`, color: t.color }}>
+                  {t.name.slice(0, 2)}
+                </div>
+                <p className="text-sm font-medium text-white/70 group-hover:text-white transition-colors">{t.name}</p>
               </motion.div>
             ))}
           </div>
         </section>
 
-        {/* Experience Timeline */}
-        <section className="py-16">
-          <div className="text-center mb-12">
-            <div className="text-sm text-gold font-medium uppercase tracking-wider mb-3">Journey</div>
-            <h2 className="heading-display text-3xl md:text-5xl font-bold">Professional <span className="text-gradient-gold">Experience</span></h2>
-          </div>
-          <div className="max-w-3xl mx-auto space-y-6">
-            {experience.map((exp, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="flex gap-6 p-6 rounded-2xl border border-white/5 hover:border-gold/20 transition-all"
-              >
-                <div className="text-2xl font-bold text-gradient-gold heading-display min-w-[60px]">{exp.year}</div>
+        {/* Experience */}
+        <section className="py-12">
+          <p className="section-label text-center">Journey</p>
+          <h2 className="heading-serif text-3xl md:text-4xl font-bold text-center mb-8">Experience</h2>
+          <div className="max-w-2xl mx-auto space-y-5">
+            {timeline.map((e, i) => (
+              <motion.div key={i} {...fadeUp} transition={{ delay: i * 0.12 }}
+                className="card-arch p-6 flex gap-5 hover:border-teal/20">
+                <div className="heading-serif text-xl font-bold text-teal-grad min-w-[52px]">{e.year}</div>
                 <div>
-                  <h3 className="text-lg font-semibold text-cream">{exp.role}</h3>
-                  <p className="text-gold text-sm mb-2">{exp.company}</p>
-                  <p className="text-cream/50 text-sm">{exp.desc}</p>
+                  <p className="font-semibold text-white">{e.role}</p>
+                  <p className="text-sm mb-1" style={{ color: '#00ceca' }}>{e.co}</p>
+                  <p className="text-white/45 text-sm">{e.desc}</p>
                 </div>
               </motion.div>
             ))}
           </div>
         </section>
+
+        {/* CTA */}
+        <div className="mt-12 relative overflow-hidden rounded-3xl p-10 text-center border"
+          style={{ borderColor: 'rgba(0,206,202,0.2)', background: 'rgba(0,206,202,0.05)' }}>
+          <h2 className="heading-serif text-2xl md:text-3xl font-bold mb-3">Sounds like the right fit?</h2>
+          <p className="text-white/50 mb-6">Let's talk about what your brand needs.</p>
+          <Link to="/contact" className="btn-primary">Start A Project <ArrowRight size={16} /></Link>
+        </div>
       </div>
     </main>
   )

@@ -1,239 +1,211 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowRight, Star, Briefcase, TrendingUp, Palette, Sparkles, Lightbulb, Rocket, Eye, Target, Award, Zap } from 'lucide-react'
-import { projects, services } from '@/data/portfolio'
+import { ArrowRight, Star, Sparkles, Palette, Megaphone, Package } from 'lucide-react'
+import { projects, testimonials } from '@/data/portfolio'
 
 const stats = [
-  { value: '250+', label: 'Projects Completed' },
-  { value: '45+', label: 'Industries Worked With' },
-  { value: '12M+', label: 'Impressions Generated' },
-  { value: '4.9', label: 'Average Client Rating' },
+  { value: '50+', label: 'Projects Completed' },
+  { value: '30+', label: 'Clients Served' },
+  { value: '72hr', label: 'Avg. Turnaround' },
+  { value: '3+', label: 'Years Experience' },
 ]
+
+const featured = projects.slice(0, 4)
 
 const whyCards = [
-  { icon: Target, title: 'Creative Strategy', desc: 'Every design starts with understanding the goal.' },
-  { icon: Sparkles, title: 'Premium Quality', desc: 'Every detail is carefully crafted.' },
-  { icon: TrendingUp, title: 'Business Focus', desc: 'Designs created to achieve real objectives.' },
-  { icon: Zap, title: 'Modern Approach', desc: 'Using current trends and technology.' },
+  { title: 'Strategy First', desc: 'Every design decision starts with your business goal, not just aesthetics.' },
+  { title: 'Dual Expertise', desc: 'Design meets analytical thinking — a unique blend of creativity and logic.' },
+  { title: 'Built to Convert', desc: 'Visuals designed to make clients SPEAK, STAY, and SELL.' },
+  { title: 'Fast & Reliable', desc: '72-hour average turnaround without sacrificing quality.' },
 ]
 
-const iconMap: Record<string, any> = { Palette, Sparkles, Lightbulb, Rocket }
+const fadeUp = { initial: { opacity: 0, y: 36 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } }
 
 export default function Home() {
-  const featured = projects.slice(0, 6)
-
   return (
-    <main className="pt-20">
-      {/* HERO */}
-      <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gold/10 rounded-full blur-[120px] animate-float" />
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px] animate-float" style={{ animationDelay: '2s' }} />
+    <main>
+      {/* ── HERO ── */}
+      <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+        {/* BG blobs */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] rounded-full opacity-20 animate-float"
+            style={{ background: 'radial-gradient(circle, #00ceca 0%, transparent 70%)' }} />
+          <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full opacity-10 animate-float"
+            style={{ background: 'radial-gradient(circle, #00ceca 0%, transparent 70%)', animationDelay: '3s' }} />
+          {/* Grid */}
+          <div className="absolute inset-0 opacity-[0.03]"
+            style={{ backgroundImage: 'linear-gradient(rgba(0,206,202,1) 1px, transparent 1px), linear-gradient(90deg, rgba(0,206,202,1) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
         </div>
 
-        <div className="container-lux relative z-10 text-center py-20">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gold/20 bg-gold/5 mb-8"
-          >
-            <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
-            <span className="text-sm text-gold font-medium">Available for new projects</span>
+        <div className="container-arch relative z-10 text-center py-16">
+          <motion.div {...fadeUp} transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border text-sm font-medium mb-8"
+            style={{ borderColor: 'rgba(0,206,202,0.3)', background: 'rgba(0,206,202,0.08)', color: '#00ceca' }}>
+            <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: '#00ceca' }} />
+            Available for new projects
           </motion.div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.1 }}
-            className="heading-display text-5xl md:text-7xl lg:text-8xl font-bold max-w-5xl mx-auto leading-[1.05]"
-          >
-            Transforming Ideas Into <span className="text-gradient-gold">Visual Experiences</span> That Build Brands
+          <motion.h1 {...fadeUp} transition={{ duration: 0.8, delay: 0.1 }}
+            className="heading-serif text-5xl md:text-7xl lg:text-8xl font-bold max-w-4xl mx-auto leading-[1.05] mb-6">
+            Your Brand Should Make People{' '}
+            <span className="text-teal-grad">Stop, Look & Buy</span>
           </motion.h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-lg md:text-xl text-cream/60 max-w-2xl mx-auto mt-8 leading-relaxed"
-          >
-            I create powerful social media designs, brand identities, and digital experiences that help businesses stand out and connect with their audience.
+          <motion.p {...fadeUp} transition={{ duration: 0.7, delay: 0.25 }}
+            className="text-lg md:text-xl text-white/55 max-w-2xl mx-auto leading-relaxed mb-5">
+            Archworks is a creative design studio by <strong className="text-white/80">Daniels I. Daniels</strong> — specialising in Brand Identity, Social Media Design, Campaign Visuals, and Event Branding.
+          </motion.p>
+          <motion.p {...fadeUp} transition={{ duration: 0.6, delay: 0.35 }}
+            className="text-base font-semibold tracking-wide mb-10"
+            style={{ color: '#00ceca' }}>
+            I design to make you SPEAK · STAY · SELL
           </motion.p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12"
-          >
-            <Link
-              to="/contact"
-              className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gold text-ink font-semibold text-lg hover:bg-gold-light transition-all hover:shadow-2xl hover:shadow-gold/30"
-            >
-              Start A Project
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+          <motion.div {...fadeUp} transition={{ duration: 0.6, delay: 0.45 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link to="/contact" className="btn-primary text-base">
+              Start A Project <ArrowRight size={18} />
             </Link>
-            <Link
-              to="/portfolio"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-white/15 text-cream font-medium text-lg hover:border-gold/40 hover:bg-gold/5 transition-all"
-            >
-              View Portfolio
+            <Link to="/portfolio" className="btn-outline text-base">
+              View Our Work
             </Link>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 1 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 max-w-3xl mx-auto"
-          >
-            {stats.map((stat, i) => (
-              <div key={i} className="text-center">
-                <div className="heading-display text-4xl font-bold text-gradient-gold">{stat.value}</div>
-                <div className="text-sm text-cream/40 mt-1">{stat.label}</div>
-              </div>
-            ))}
           </motion.div>
         </div>
       </section>
 
-      {/* FEATURED WORK */}
-      <section className="py-24 relative">
-        <div className="container-lux">
-          <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-16 gap-4">
+      {/* ── STATS STRIP ── */}
+      <section className="py-8 border-y border-white/5" style={{ background: 'rgba(0,206,202,0.06)' }}>
+        <div className="container-arch">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {stats.map((s, i) => (
+              <motion.div key={i} {...fadeUp} transition={{ delay: i * 0.08 }} className="text-center">
+                <div className="heading-serif text-4xl md:text-5xl font-bold text-teal-grad">{s.value}</div>
+                <div className="text-xs text-white/40 mt-1 uppercase tracking-wider">{s.label}</div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── FEATURED WORK ── */}
+      <section className="py-24">
+        <div className="container-arch">
+          <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 gap-4">
             <div>
-              <div className="text-sm text-gold font-medium uppercase tracking-wider mb-3">Featured Work</div>
-              <h2 className="heading-display text-4xl md:text-6xl font-bold leading-tight">
-                Selected <span className="text-gradient-gold">Projects</span>
-              </h2>
+              <p className="section-label">Selected Work</p>
+              <h2 className="heading-serif text-4xl md:text-5xl font-bold">Our Best Projects</h2>
             </div>
-            <Link to="/portfolio" className="group inline-flex items-center gap-2 text-cream/60 hover:text-gold transition-colors">
-              View All Projects
-              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            <Link to="/portfolio" className="group inline-flex items-center gap-2 text-sm text-white/50 hover:text-white transition-colors">
+              View All Work <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {featured.map((project, i) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                className={i === 0 ? 'md:col-span-2 md:row-span-2' : ''}
-              >
+              <motion.div key={project.id} {...fadeUp} transition={{ duration: 0.6, delay: i * 0.1 }}
+                className={i === 0 ? 'md:col-span-2' : ''}>
                 <Link to={`/portfolio/${project.slug}`} className="group block relative overflow-hidden rounded-2xl">
-                  <div className={`relative overflow-hidden ${i === 0 ? 'aspect-[16/10]' : 'aspect-[4/3]'}`}>
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                    />
-                    <div className={`absolute inset-0 bg-gradient-to-t ${project.gradient} opacity-30 group-hover:opacity-50 transition-opacity duration-500`} />
-                    <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-transparent" />
+                  <div className={`relative overflow-hidden ${i === 0 ? 'aspect-[21/9]' : 'aspect-[4/3]'}`}>
+                    <img src={project.image} alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <div className={`absolute inset-0 bg-gradient-to-t ${project.gradient} opacity-25 group-hover:opacity-40 transition-opacity`} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy/95 via-navy/30 to-transparent" />
                   </div>
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <div className="text-xs text-gold font-medium uppercase tracking-wider mb-2">{project.category}</div>
-                    <h3 className="heading-display text-xl md:text-2xl font-semibold text-cream mb-2">{project.title}</h3>
-                    <p className="text-cream/50 text-sm hidden md:block">{project.shortDesc}</p>
+                  <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                    <span className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: '#00ceca' }}>{project.category}</span>
+                    <h3 className="heading-serif text-xl md:text-2xl font-bold text-white mb-1">{project.title}</h3>
+                    <p className="text-white/40 text-sm">{project.client} · {project.year}</p>
+                  </div>
+                  <div className="absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                    style={{ background: '#00ceca' }}>
+                    <ArrowRight size={18} className="text-navy" />
                   </div>
                 </Link>
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* SERVICES */}
-      <section className="py-24 bg-ink-soft dark:bg-ink-soft">
-        <div className="container-lux">
-          <div className="text-center mb-16">
-            <div className="text-sm text-gold font-medium uppercase tracking-wider mb-3">What I Do</div>
-            <h2 className="heading-display text-4xl md:text-6xl font-bold">
-              Premium <span className="text-gradient-gold">Services</span>
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {services.map((service, i) => {
-              const Icon = iconMap[service.icon] || Sparkles
-              return (
-                <motion.div
-                  key={service.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="group p-8 rounded-2xl border border-white/5 hover:border-gold/20 bg-ink-card/50 hover:bg-ink-card transition-all hover:shadow-2xl hover:shadow-gold/5"
-                >
-                  <div className="w-14 h-14 rounded-xl bg-gold/10 flex items-center justify-center mb-6 group-hover:bg-gold/20 transition-colors">
-                    <Icon size={26} className="text-gold" />
-                  </div>
-                  <h3 className="heading-display text-2xl font-semibold mb-3">{service.title}</h3>
-                  <p className="text-cream/50 leading-relaxed mb-6">{service.description}</p>
-                  <Link to="/services" className="inline-flex items-center gap-2 text-gold text-sm font-medium group-hover:gap-3 transition-all">
-                    Learn More <ArrowRight size={16} />
-                  </Link>
-                </motion.div>
-              )
-            })}
+          {/* CTA #1 */}
+          <div className="text-center mt-10">
+            <Link to="/portfolio" className="btn-outline">
+              See All Projects <ArrowRight size={16} />
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* WHY WORK WITH ME */}
-      <section className="py-24">
-        <div className="container-lux">
-          <div className="text-center mb-16">
-            <div className="text-sm text-gold font-medium uppercase tracking-wider mb-3">Why Choose Me</div>
-            <h2 className="heading-display text-4xl md:text-6xl font-bold">
-              Why Work <span className="text-gradient-gold">With Me</span>
-            </h2>
+      {/* ── WHY ARCHWORKS ── */}
+      <section className="py-20" style={{ background: 'rgba(4,57,92,0.4)' }}>
+        <div className="container-arch">
+          <div className="text-center mb-12">
+            <p className="section-label">Why Choose Archworks</p>
+            <h2 className="heading-serif text-4xl md:text-5xl font-bold">Design That Does More</h2>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {whyCards.map((card, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="p-6 rounded-2xl border border-white/5 hover:border-gold/20 transition-all text-center"
-              >
-                <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center mx-auto mb-4">
-                  <card.icon size={22} className="text-gold" />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            {whyCards.map((c, i) => (
+              <motion.div key={i} {...fadeUp} transition={{ delay: i * 0.1 }}
+                className="card-arch p-6 hover:border-teal/20 hover:bg-navy-card/80">
+                <div className="w-10 h-10 rounded-xl mb-4 flex items-center justify-center"
+                  style={{ background: 'rgba(0,206,202,0.12)' }}>
+                  <Sparkles size={20} style={{ color: '#00ceca' }} />
                 </div>
-                <h3 className="heading-display text-xl font-semibold mb-2">{card.title}</h3>
-                <p className="text-cream/50 text-sm leading-relaxed">{card.desc}</p>
+                <h3 className="font-semibold text-white mb-2">{c.title}</h3>
+                <p className="text-white/40 text-sm leading-relaxed">{c.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
+      {/* ── TESTIMONIALS ── */}
       <section className="py-24">
-        <div className="container-lux">
-          <div className="relative overflow-hidden rounded-3xl p-12 md:p-20 text-center border border-gold/20">
-            <div className="absolute inset-0 bg-gradient-to-br from-gold/10 via-transparent to-purple-500/10" />
+        <div className="container-arch">
+          <div className="text-center mb-12">
+            <p className="section-label">Client Reviews</p>
+            <h2 className="heading-serif text-4xl md:text-5xl font-bold">Real Words. Real Results.</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {testimonials.map((t, i) => (
+              <motion.div key={t.id} {...fadeUp} transition={{ delay: i * 0.1 }}
+                className="card-arch p-8 hover:border-teal/20">
+                <div className="flex gap-1 mb-4">
+                  {[...Array(5)].map((_, j) => <Star key={j} size={15} style={{ color: '#00ceca', fill: '#00ceca' }} />)}
+                </div>
+                <p className="text-white/70 leading-relaxed mb-6 italic">"{t.quote}"</p>
+                <div className="flex items-center gap-3">
+                  <img src={t.avatar} alt={t.name} className="w-11 h-11 rounded-full object-cover border" style={{ borderColor: 'rgba(0,206,202,0.2)' }} />
+                  <div>
+                    <p className="font-semibold text-white text-sm">{t.name}</p>
+                    <p className="text-xs text-white/40">{t.role}, {t.company} · {t.service}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── CTA BANNER #2 ── */}
+      <section className="py-20">
+        <div className="container-arch">
+          <motion.div {...fadeUp}
+            className="relative overflow-hidden rounded-3xl p-12 md:p-16 text-center border"
+            style={{ borderColor: 'rgba(0,206,202,0.2)', background: 'linear-gradient(135deg, rgba(0,206,202,0.08) 0%, rgba(3,47,76,0.6) 100%)' }}>
+            <div className="absolute inset-0 pointer-events-none opacity-10"
+              style={{ backgroundImage: 'radial-gradient(circle at 30% 50%, #00ceca 0%, transparent 60%)' }} />
             <div className="relative z-10">
-              <h2 className="heading-display text-4xl md:text-6xl font-bold mb-6">
-                Ready To Build Something <span className="text-gradient-gold">Remarkable?</span>
+              <p className="section-label mb-2">Ready?</p>
+              <h2 className="heading-serif text-3xl md:text-5xl font-bold text-white mb-4">
+                Let's Build Something That <span className="text-teal-grad">Works For Your Brand</span>
               </h2>
-              <p className="text-cream/60 text-lg max-w-xl mx-auto mb-10">
-                Let's create visual experiences that make your brand impossible to ignore.
+              <p className="text-white/50 text-lg max-w-xl mx-auto mb-8">
+                Whether you need a brand identity from scratch or a social media system that actually converts — let's talk.
               </p>
-              <Link
-                to="/contact"
-                className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gold text-ink font-semibold text-lg hover:bg-gold-light transition-all hover:shadow-2xl hover:shadow-gold/30"
-              >
-                Start A Project
-                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+              <Link to="/contact" className="btn-primary text-base">
+                Start A Project <ArrowRight size={18} />
               </Link>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
     </main>

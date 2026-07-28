@@ -3,84 +3,56 @@ import { motion } from 'framer-motion'
 import { Star, ArrowRight } from 'lucide-react'
 import { testimonials } from '@/data/portfolio'
 
+const fadeUp = { initial: { opacity: 0, y: 28 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } }
+
 export default function Testimonials() {
   return (
     <main className="pt-32 pb-24">
-      <div className="container-lux">
-        {/* Header */}
-        <div className="text-center mb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-sm text-gold font-medium uppercase tracking-wider mb-3"
-          >
-            Testimonials
-          </motion.div>
-          <h1 className="heading-display text-5xl md:text-7xl font-bold mb-6">
-            Client <span className="text-gradient-gold">Stories</span>
+      <div className="container-arch">
+        <div className="text-center mb-16">
+          <p className="section-label">Testimonials</p>
+          <h1 className="heading-serif text-5xl md:text-6xl font-bold mb-4">
+            Real Words. <span className="text-teal-grad">Real Clients.</span>
           </h1>
-          <p className="text-cream/50 text-lg max-w-xl mx-auto">
-            Don't just take my word for it. Here's what clients say about working together.
+          <p className="text-white/50 text-lg max-w-xl mx-auto">
+            Social proof is not decoration — it's evidence. Here's what clients say after working with Archworks.
           </p>
         </div>
 
-        {/* Featured Testimonial */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="relative overflow-hidden rounded-3xl border border-gold/20 p-12 md:p-16 mb-16 text-center"
-        >
-          <div className="absolute inset-0 bg-gradient-to-br from-gold/10 via-transparent to-purple-500/10" />
-          <div className="relative z-10 max-w-3xl mx-auto">
-            <div className="flex justify-center gap-1 mb-6">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} size={20} className="text-gold fill-gold" />
-              ))}
-            </div>
-            <blockquote className="heading-display text-2xl md:text-4xl font-medium leading-snug mb-8">
-              "{testimonials[0].quote}"
-            </blockquote>
-            <div className="flex items-center justify-center gap-4">
-              <img
-                src={testimonials[0].avatar}
-                alt={testimonials[0].name}
-                className="w-16 h-16 rounded-full object-cover border-2 border-gold/30"
-              />
-              <div className="text-left">
-                <div className="font-semibold text-cream">{testimonials[0].name}</div>
-                <div className="text-sm text-cream/50">{testimonials[0].role}, {testimonials[0].company}</div>
-              </div>
+        {/* Hero testimonial */}
+        <motion.div {...fadeUp} className="relative overflow-hidden rounded-3xl p-12 md:p-16 mb-10 text-center border"
+          style={{ borderColor: 'rgba(0,206,202,0.2)', background: 'rgba(0,206,202,0.05)' }}>
+          <div className="flex justify-center gap-1 mb-5">
+            {[...Array(5)].map((_, i) => <Star key={i} size={22} style={{ color: '#00ceca', fill: '#00ceca' }} />)}
+          </div>
+          <blockquote className="heading-serif text-2xl md:text-3xl font-medium max-w-3xl mx-auto leading-snug mb-8">
+            "{testimonials[0].quote}"
+          </blockquote>
+          <div className="flex items-center justify-center gap-4">
+            <img src={testimonials[0].avatar} alt={testimonials[0].name}
+              className="w-14 h-14 rounded-full object-cover border-2" style={{ borderColor: '#00ceca' }} />
+            <div className="text-left">
+              <p className="font-semibold text-white">{testimonials[0].name}</p>
+              <p className="text-sm text-white/40">{testimonials[0].role}, {testimonials[0].company}</p>
+              <p className="text-xs mt-0.5" style={{ color: '#00ceca' }}>Hired for: {testimonials[0].service}</p>
             </div>
           </div>
         </motion.div>
 
-        {/* Testimonial Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
           {testimonials.slice(1).map((t, i) => (
-            <motion.div
-              key={t.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="p-8 rounded-2xl border border-white/5 hover:border-gold/20 transition-all bg-ink-card/30"
-            >
+            <motion.div key={t.id} {...fadeUp} transition={{ delay: i * 0.1 }}
+              className="card-arch p-7 hover:border-teal/20">
               <div className="flex gap-1 mb-4">
-                {[...Array(t.rating)].map((_, j) => (
-                  <Star key={j} size={16} className="text-gold fill-gold" />
-                ))}
+                {[...Array(5)].map((_, j) => <Star key={j} size={14} style={{ color: '#00ceca', fill: '#00ceca' }} />)}
               </div>
-              <p className="text-cream/60 leading-relaxed mb-6 italic">"{t.quote}"</p>
+              <p className="text-white/60 text-sm leading-relaxed mb-5 italic">"{t.quote}"</p>
               <div className="flex items-center gap-3">
-                <img
-                  src={t.avatar}
-                  alt={t.name}
-                  className="w-12 h-12 rounded-full object-cover border border-gold/20"
-                />
+                <img src={t.avatar} alt={t.name} className="w-11 h-11 rounded-full object-cover border" style={{ borderColor: 'rgba(0,206,202,0.2)' }} />
                 <div>
-                  <div className="font-semibold text-cream text-sm">{t.name}</div>
-                  <div className="text-xs text-cream/40">{t.role}, {t.company}</div>
+                  <p className="font-semibold text-white text-sm">{t.name}</p>
+                  <p className="text-xs text-white/35">{t.role}, {t.company}</p>
+                  <p className="text-xs mt-0.5" style={{ color: '#00ceca' }}>{t.service}</p>
                 </div>
               </div>
             </motion.div>
@@ -88,23 +60,12 @@ export default function Testimonials() {
         </div>
 
         {/* CTA */}
-        <section className="py-16 mt-8">
-          <div className="relative overflow-hidden rounded-3xl p-12 md:p-16 text-center border border-gold/20">
-            <div className="absolute inset-0 bg-gradient-to-br from-gold/10 via-transparent to-purple-500/10" />
-            <div className="relative z-10">
-              <h2 className="heading-display text-3xl md:text-5xl font-bold mb-6">
-                Become the next <span className="text-gradient-gold">success story</span>
-              </h2>
-              <Link
-                to="/contact"
-                className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gold text-ink font-semibold text-lg hover:bg-gold-light transition-all hover:shadow-2xl hover:shadow-gold/30"
-              >
-                Start A Project
-                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </div>
-          </div>
-        </section>
+        <div className="relative overflow-hidden rounded-3xl p-10 md:p-14 text-center border"
+          style={{ borderColor: 'rgba(0,206,202,0.2)', background: 'rgba(0,206,202,0.05)' }}>
+          <h2 className="heading-serif text-3xl md:text-4xl font-bold mb-3">Become the next success story</h2>
+          <p className="text-white/50 mb-7">Join 30+ clients who trusted Archworks with their brand.</p>
+          <Link to="/contact" className="btn-primary text-base">Start A Project <ArrowRight size={18} /></Link>
+        </div>
       </div>
     </main>
   )

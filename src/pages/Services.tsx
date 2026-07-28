@@ -1,145 +1,90 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowRight, Palette, Sparkles, Lightbulb, Rocket, Check } from 'lucide-react'
+import { ArrowRight, Check, Sparkles, Palette, Star, Calendar, Package } from 'lucide-react'
 import { services } from '@/data/portfolio'
 
-const iconMap: Record<string, any> = { Palette, Sparkles, Lightbulb, Rocket }
+const fadeUp = { initial: { opacity: 0, y: 28 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } }
 
-const additionalServices = [
-  { title: 'Social Media Management', desc: 'Full-service content creation and community management.' },
-  { title: 'Brand Design', desc: 'Logo systems, visual identity, and brand guidelines.' },
-  { title: 'Creative Direction', desc: 'Art direction for campaigns, photoshoots, and content.' },
-  { title: 'Marketing Graphics', desc: 'Ad creatives, banners, and promotional materials.' },
-  { title: 'Content Systems', desc: 'Template systems and content frameworks for scale.' },
-]
+const iconMap: Record<string, any> = { Sparkles, Palette, Megaphone: ArrowRight, Star, Calendar, Package }
 
 export default function Services() {
   return (
     <main className="pt-32 pb-24">
-      <div className="container-lux">
-        {/* Header */}
-        <div className="text-center mb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-sm text-gold font-medium uppercase tracking-wider mb-3"
-          >
-            Services
-          </motion.div>
-          <h1 className="heading-display text-5xl md:text-7xl font-bold mb-6">
-            What I <span className="text-gradient-gold">Deliver</span>
+      <div className="container-arch">
+        <div className="text-center mb-16">
+          <p className="section-label">Services</p>
+          <h1 className="heading-serif text-5xl md:text-6xl font-bold mb-4">
+            What <span className="text-teal-grad">Archworks</span> Offers
           </h1>
-          <p className="text-cream/50 text-lg max-w-xl mx-auto">
-            Premium design services that transform brands and drive business results.
+          <p className="text-white/50 text-lg max-w-xl mx-auto">
+            Every service is built around one goal — making your brand impossible to ignore.
           </p>
         </div>
 
-        {/* Detailed Services */}
-        <div className="space-y-24">
-          {services.map((service, i) => {
-            const Icon = iconMap[service.icon] || Sparkles
-            const isReversed = i % 2 === 1
+        <div className="space-y-6 mb-20">
+          {services.map((s, i) => {
+            const Icon = iconMap[s.icon] || Sparkles
+            const isEven = i % 2 === 1
             return (
-              <div key={service.id} className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <motion.div
-                  initial={{ opacity: 0, x: isReversed ? 30 : -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6 }}
-                  className={isReversed ? 'lg:order-2' : ''}
-                >
-                  <div className="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center mb-6">
-                    <Icon size={30} className="text-gold" />
-                  </div>
-                  <h2 className="heading-display text-3xl md:text-4xl font-bold mb-4">{service.title}</h2>
-                  <p className="text-cream/60 text-lg leading-relaxed mb-8">{service.description}</p>
-
-                  <div className="space-y-4">
-                    <div>
-                      <div className="text-xs text-gold uppercase tracking-wider mb-2">Problem</div>
-                      <p className="text-cream/50">{service.problem}</p>
+              <motion.div key={s.id} {...fadeUp} transition={{ delay: i * 0.08 }}
+                className="card-arch overflow-hidden hover:border-teal/20">
+                <div className={`grid grid-cols-1 lg:grid-cols-2 ${isEven ? '' : ''}`}>
+                  {/* Info */}
+                  <div className="p-8 md:p-10">
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+                      style={{ background: 'rgba(0,206,202,0.12)' }}>
+                      <Icon size={22} style={{ color: '#00ceca' }} />
                     </div>
-                    <div>
-                      <div className="text-xs text-gold uppercase tracking-wider mb-2">Solution</div>
-                      <p className="text-cream/50">{service.solution}</p>
-                    </div>
-                    <div>
-                      <div className="text-xs text-gold uppercase tracking-wider mb-2">Outcome</div>
-                      <p className="text-cream/50">{service.outcome}</p>
+                    <h2 className="heading-serif text-2xl md:text-3xl font-bold mb-1">{s.title}</h2>
+                    <p className="text-sm font-medium mb-4" style={{ color: '#00ceca' }}>{s.tagline}</p>
+                    <p className="text-white/55 leading-relaxed mb-6">{s.desc}</p>
+                    <div className="text-sm text-white/35 mb-6">Best for: {s.for}</div>
+                    <div className="flex items-center justify-between">
+                      <div className="text-lg font-bold" style={{ color: '#00ceca' }}>{s.price}</div>
+                      <Link to="/contact" className="btn-primary text-sm py-2.5 px-5">
+                        Get a Quote <ArrowRight size={15} />
+                      </Link>
                     </div>
                   </div>
-                </motion.div>
 
-                <motion.div
-                  initial={{ opacity: 0, x: isReversed ? -30 : 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6 }}
-                  className={isReversed ? 'lg:order-1' : ''}
-                >
-                  <div className="p-8 rounded-2xl border border-white/5 bg-ink-card/30">
-                    <div className="text-xs text-gold uppercase tracking-wider mb-6">Process</div>
-                    <div className="space-y-4">
-                      {service.process.map((step, j) => (
-                        <div key={j} className="flex items-center gap-4">
-                          <div className="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0">
-                            <Check size={16} className="text-gold" />
+                  {/* What's included */}
+                  <div className="p-8 md:p-10 border-t lg:border-t-0 lg:border-l border-white/5"
+                    style={{ background: 'rgba(4,57,92,0.3)' }}>
+                    <p className="text-xs font-semibold uppercase tracking-widest mb-5 text-white/40">What's Included</p>
+                    <ul className="space-y-3">
+                      {s.includes.map((item, j) => (
+                        <li key={j} className="flex items-center gap-3 text-white/65 text-sm">
+                          <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
+                            style={{ background: 'rgba(0,206,202,0.15)' }}>
+                            <Check size={12} style={{ color: '#00ceca' }} />
                           </div>
-                          <div>
-                            <div className="text-sm text-cream/30">Step {j + 1}</div>
-                            <div className="text-cream font-medium">{step}</div>
-                          </div>
-                        </div>
+                          {item}
+                        </li>
                       ))}
-                    </div>
+                    </ul>
                   </div>
-                </motion.div>
-              </div>
+                </div>
+              </motion.div>
             )
           })}
         </div>
 
-        {/* Additional Services */}
-        <section className="py-20 mt-12">
-          <div className="text-center mb-12">
-            <div className="text-sm text-gold font-medium uppercase tracking-wider mb-3">Also Offered</div>
-            <h2 className="heading-display text-3xl md:text-5xl font-bold">Additional <span className="text-gradient-gold">Services</span></h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {additionalServices.map((svc, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="p-6 rounded-2xl border border-white/5 hover:border-gold/20 transition-all"
-              >
-                <h3 className="heading-display text-xl font-semibold mb-2">{svc.title}</h3>
-                <p className="text-cream/50 text-sm">{svc.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </section>
+        {/* Not Sure? */}
+        <div className="card-arch p-10 text-center mb-6">
+          <h3 className="heading-serif text-2xl font-bold mb-3">Not sure what you need?</h3>
+          <p className="text-white/50 mb-6 max-w-md mx-auto">Tell me about your business and I'll recommend the right package for your goals and budget.</p>
+          <Link to="/contact" className="btn-primary">Let's Figure It Out <ArrowRight size={16} /></Link>
+        </div>
 
         {/* CTA */}
-        <section className="py-16">
-          <div className="relative overflow-hidden rounded-3xl p-12 md:p-16 text-center border border-gold/20">
-            <div className="absolute inset-0 bg-gradient-to-br from-gold/10 via-transparent to-purple-500/10" />
-            <div className="relative z-10">
-              <h2 className="heading-display text-3xl md:text-5xl font-bold mb-6">
-                Ready to elevate your <span className="text-gradient-gold">brand?</span>
-              </h2>
-              <Link
-                to="/contact"
-                className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gold text-ink font-semibold text-lg hover:bg-gold-light transition-all hover:shadow-2xl hover:shadow-gold/30"
-              >
-                Start A Project
-                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </div>
-          </div>
-        </section>
+        <div className="relative overflow-hidden rounded-3xl p-10 md:p-14 text-center border"
+          style={{ borderColor: 'rgba(0,206,202,0.2)', background: 'linear-gradient(135deg, rgba(0,206,202,0.08) 0%, rgba(3,47,76,0.5) 100%)' }}>
+          <h2 className="heading-serif text-3xl md:text-4xl font-bold mb-3">
+            Ready to elevate your <span className="text-teal-grad">brand?</span>
+          </h2>
+          <p className="text-white/50 mb-7">Let's create something that works — not just something that looks good.</p>
+          <Link to="/contact" className="btn-primary text-base">Start A Project <ArrowRight size={18} /></Link>
+        </div>
       </div>
     </main>
   )
