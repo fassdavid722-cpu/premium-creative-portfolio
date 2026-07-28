@@ -16,7 +16,7 @@ export default function Services() {
           <h1 className="heading-serif text-5xl md:text-6xl font-bold mb-4">
             What <span className="text-teal-grad">Archworks</span> Offers
           </h1>
-          <p className="text-white/50 text-lg max-w-xl mx-auto">
+          <p className="text-ink-muted text-lg max-w-xl mx-auto">
             Every service is built around one goal — making your brand impossible to ignore.
           </p>
         </div>
@@ -32,14 +32,14 @@ export default function Services() {
                   <div className="p-8 md:p-10">
                     <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
                       style={{ background: 'rgba(0,206,202,0.1)' }}>
-                      <Icon size={22} style={{ color: '#00ceca' }} />
+                      <Icon size={22} style={{ color: '#009e9b' }} />
                     </div>
                     <h2 className="heading-serif text-2xl md:text-3xl font-bold mb-1">{s.title}</h2>
-                    <p className="text-sm font-medium mb-4" style={{ color: '#00ceca' }}>{s.tagline}</p>
-                    <p className="text-white/55 leading-relaxed mb-6">{s.desc}</p>
-                    <div className="text-sm text-white/35 mb-6">Best for: {s.for}</div>
+                    <p className="text-sm font-medium mb-4" style={{ color: '#009e9b' }}>{s.tagline}</p>
+                    <p className="text-ink-muted leading-relaxed mb-6">{s.desc}</p>
+                    <div className="text-sm text-ink-faint mb-6">Best for: {s.for}</div>
                     <div className="flex items-center justify-between">
-                      <div className="text-lg font-bold" style={{ color: '#00ceca' }}>{s.price}</div>
+                      <div className="text-lg font-bold" style={{ color: '#009e9b' }}>{s.price}</div>
                       <Link to="/contact" className="btn-primary text-sm py-2.5 px-5">
                         Get a Quote <ArrowRight size={15} />
                       </Link>
@@ -47,15 +47,15 @@ export default function Services() {
                   </div>
 
                   {/* What's included */}
-                  <div className="p-8 md:p-10 border-t lg:border-t-0 lg:border-l border-white/5"
-                    style={{ background: 'rgba(3,47,76,0.3)' }}>
-                    <p className="text-xs font-semibold uppercase tracking-widest mb-5 text-white/40">What's Included</p>
+                  <div className="p-8 md:p-10 border-t lg:border-t-0 lg:border-l border-ink/[0.06]"
+                    style={{ background: 'rgba(0,206,202,0.03)' }}>
+                    <p className="text-xs font-semibold uppercase tracking-widest mb-5 text-ink-faint">What's Included</p>
                     <ul className="space-y-3">
                       {s.includes.map((item, j) => (
-                        <li key={j} className="flex items-center gap-3 text-white/65 text-sm">
+                        <li key={j} className="flex items-center gap-3 text-ink-light text-sm">
                           <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
                             style={{ background: 'rgba(0,206,202,0.12)' }}>
-                            <Check size={12} style={{ color: '#00ceca' }} />
+                            <Check size={12} style={{ color: '#009e9b' }} />
                           </div>
                           {item}
                         </li>
@@ -71,7 +71,7 @@ export default function Services() {
         {/* Not Sure? */}
         <div className="card-arch p-10 text-center mb-6 gradient-border">
           <h3 className="heading-serif text-2xl font-bold mb-3">Not sure what you need?</h3>
-          <p className="text-white/50 mb-6 max-w-md mx-auto">Tell me about your business and I'll recommend the right package for your goals and budget.</p>
+          <p className="text-ink-muted mb-6 max-w-md mx-auto">Tell me about your business and I'll recommend the right package for your goals and budget.</p>
           <Link to="/contact" className="btn-primary">Let's Figure It Out <ArrowRight size={16} /></Link>
         </div>
 
@@ -83,7 +83,7 @@ export default function Services() {
             <h2 className="heading-serif text-3xl md:text-4xl font-bold mb-3">
               Ready to elevate your <span className="text-teal-grad">brand?</span>
             </h2>
-            <p className="text-white/50 mb-7">Let's create something that works — not just something that looks good.</p>
+            <p className="text-ink-muted mb-7">Let's create something that works — not just something that looks good.</p>
             <Link to="/contact" className="btn-primary text-base">Start A Project <ArrowRight size={18} /></Link>
           </div>
         </div>

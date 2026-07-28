@@ -4,17 +4,28 @@ export default {
   theme: {
     extend: {
       colors: {
+        ink: {
+          DEFAULT: '#1a2538',
+          light: '#3a4a5e',
+          muted: '#7a8a9e',
+          faint: '#aab8c8',
+        },
         navy: {
           DEFAULT: '#032f4c',
-          dark: '#021e31',
-          card: '#04395c',
-          deep: '#01182a',
-          border: 'rgba(255,255,255,0.07)',
+          dark: '#1a2538',
+          card: '#ffffff',
+          deep: '#021e31',
+          border: 'rgba(3,47,76,0.08)',
         },
         teal: {
           DEFAULT: '#00ceca',
           light: '#5eecea',
           dark: '#009e9b',
+        },
+        cream: {
+          DEFAULT: '#f7f9fa',
+          warm: '#f4f1ec',
+          card: '#ffffff',
         },
       },
       fontFamily: {

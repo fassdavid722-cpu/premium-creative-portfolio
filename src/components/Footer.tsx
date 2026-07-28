@@ -1,61 +1,63 @@
 import { Link } from 'react-router-dom'
-import { Instagram, Twitter, Linkedin, Facebook, Mail, ArrowRight } from 'lucide-react'
-
-const socials = [
-  { Icon: Instagram, href: 'https://www.instagram.com/the_archworks', label: 'Instagram' },
-  { Icon: Twitter, href: 'https://x.com/A_Archworks2013', label: 'Twitter/X' },
-  { Icon: Linkedin, href: 'https://www.linkedin.com/in/daniels-i-daniels-285578220', label: 'LinkedIn' },
-  { Icon: Facebook, href: 'https://www.facebook.com/share/17t8ojuqZF/', label: 'Facebook' },
-  { Icon: Mail, href: 'mailto:archdaniels101@gmail.com', label: 'Email' },
-]
+import { Instagram, Linkedin, Mail, ArrowUpRight } from 'lucide-react'
 
 export default function Footer() {
   return (
-    <footer className="pt-16 pb-8 border-t noise-overlay" style={{ background: '#060609', borderColor: 'rgba(255,255,255,0.06)' }}>
-      <div className="container-arch relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
-          <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-9 h-9 rounded-lg flex items-center justify-center font-bold text-ink text-lg" style={{ background: '#00ceca' }}>A</div>
-              <span className="text-xl font-bold text-white">Archworks<span style={{ color: '#00ceca' }}>.</span></span>
-            </div>
-            <p className="text-white/40 text-sm leading-relaxed mb-4 max-w-xs">
-              I design to make you <span style={{ color: '#00ceca' }}>SPEAK</span> · <span style={{ color: '#00ceca' }}>STAY</span> · <span style={{ color: '#00ceca' }}>SELL</span>
+    <footer className="border-t" style={{ borderColor: 'rgba(3,47,76,0.08)', background: '#ffffff' }}>
+      <div className="container-arch py-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+          <div className="md:col-span-2">
+            <Link to="/" className="flex items-center gap-2 mb-4">
+              <div className="w-9 h-9 rounded-lg flex items-center justify-center font-bold text-white text-lg" style={{ background: '#00ceca' }}>A</div>
+              <span className="text-xl font-bold text-ink">Archworks<span style={{ color: '#00ceca' }}>.</span></span>
+            </Link>
+            <p className="text-ink-muted text-sm leading-relaxed max-w-sm mb-6">
+              Creative design studio by Daniels I. Daniels. I design to make you SPEAK · STAY · SELL.
             </p>
-            <div className="flex gap-2">
-              {socials.map(({ Icon, href, label }) => (
-                <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
-                  className="w-9 h-9 rounded-lg border border-white/10 flex items-center justify-center text-white/40 hover:text-teal hover:border-lime/40 hover:bg-lime/5 transition-all duration-300">
-                  <Icon size={16} />
+            <div className="flex items-center gap-3">
+              {[
+                { icon: Instagram, href: '#' },
+                { icon: Linkedin, href: '#' },
+                { icon: Mail, href: 'mailto:hello@archworks.studio' },
+              ].map((s, i) => (
+                <a key={i} href={s.href} className="w-10 h-10 rounded-lg flex items-center justify-center transition-all hover:scale-110" style={{ background: 'rgba(0,206,202,0.08)', color: '#009e9b' }}>
+                  <s.icon size={18} />
                 </a>
               ))}
             </div>
           </div>
 
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: '#00ceca' }}>Navigate</h4>
-            <ul className="space-y-2.5">
-              {[{ to: '/', l: 'Home' }, { to: '/portfolio', l: 'Work' }, { to: '/services', l: 'Services' }, { to: '/about', l: 'About' }, { to: '/testimonials', l: 'Testimonials' }, { to: '/blog', l: 'Insights' }].map(x => (
-                <li key={x.to}><Link to={x.to} className="text-white/40 hover:text-white text-sm transition-colors">{x.l}</Link></li>
+            <h4 className="font-semibold text-ink mb-4 text-sm uppercase tracking-wider">Navigate</h4>
+            <div className="flex flex-col gap-2.5">
+              {[
+                { to: '/', label: 'Home' },
+                { to: '/portfolio', label: 'Work' },
+                { to: '/services', label: 'Services' },
+                { to: '/about', label: 'About' },
+                { to: '/contact', label: 'Contact' },
+              ].map(l => (
+                <Link key={l.to} to={l.to} className="text-sm text-ink-muted hover:text-ink transition-colors flex items-center gap-1 group">
+                  {l.label}
+                  <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                </Link>
               ))}
-            </ul>
+            </div>
           </div>
 
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: '#00ceca' }}>Let's Work</h4>
-            <div className="space-y-2 mb-5">
-              <p className="text-white/40 text-sm">archdaniels101@gmail.com</p>
-              <a href="https://wa.me/2348000000000" className="text-white/40 text-sm hover:text-white transition-colors">WhatsApp</a>
+            <h4 className="font-semibold text-ink mb-4 text-sm uppercase tracking-wider">Services</h4>
+            <div className="flex flex-col gap-2.5">
+              {['Brand Identity', 'Social Media Design', 'Campaign Visuals', 'Event Branding', 'Prints & Merch'].map(s => (
+                <span key={s} className="text-sm text-ink-muted">{s}</span>
+              ))}
             </div>
-            <Link to="/contact" className="btn-primary text-sm py-2.5 px-5 gap-1.5">
-              Start A Project <ArrowRight size={15} />
-            </Link>
           </div>
         </div>
 
-        <div className="pt-6 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-3">
-          <p className="text-white/20 text-xs">© 2026 Archworks · Daniels I. Daniels · All rights reserved</p>
-          <p className="text-white/20 text-xs">Brand Identity · Social Media Design · Anambra, Nigeria</p>
+        <div className="pt-8 border-t flex flex-col md:flex-row items-center justify-between gap-4" style={{ borderColor: 'rgba(3,47,76,0.06)' }}>
+          <p className="text-xs text-ink-faint">© 2026 Archworks. Designed by Daniels I. Daniels.</p>
+          <p className="text-xs text-ink-faint">SPEAK · STAY · SELL</p>
         </div>
       </div>
     </footer>

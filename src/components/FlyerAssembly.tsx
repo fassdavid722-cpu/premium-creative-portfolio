@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { X } from 'lucide-react'
 import { Project } from '@/data/portfolio'
 
@@ -100,7 +100,6 @@ export default function FlyerAssembly({ project, onClose }: { project: Project; 
   const [phase, setPhase] = useState<'enter' | 'visible' | 'exit'>('enter')
   const layers = getAnimationLayers(project)
 
-  // Close on Escape
   useEffect(() => {
     const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') handleClose() }
     window.addEventListener('keydown', handler)
@@ -127,8 +126,8 @@ export default function FlyerAssembly({ project, onClose }: { project: Project; 
 
       {/* Close button */}
       <button onClick={handleClose}
-        className="absolute top-6 right-6 z-50 w-11 h-11 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:border-teal transition-all backdrop-blur-sm"
-        style={{ background: 'rgba(3,47,76,0.7)' }}>
+        className="absolute top-6 right-6 z-50 w-11 h-11 rounded-full border flex items-center justify-center transition-all backdrop-blur-sm"
+        style={{ borderColor: 'rgba(3,47,76,0.1)', background: 'rgba(255,255,255,0.9)', color: '#032f4c' }}>
         <X size={20} />
       </button>
 
@@ -290,7 +289,7 @@ export default function FlyerAssembly({ project, onClose }: { project: Project; 
           {/* Teal glow border pulse after full assembly */}
           <motion.div
             className="absolute inset-0 rounded-[20px] pointer-events-none"
-            style={{ zIndex: 15, boxShadow: '0 0 0 1px rgba(0,206,202,0)' }}
+            style={{ zIndex: 15 }}
             initial={{ boxShadow: '0 0 0 1px rgba(0,206,202,0)' }}
             animate={{ boxShadow: ['0 0 0 1px rgba(0,206,202,0)', '0 0 30px 2px rgba(0,206,202,0.4)', '0 0 10px 1px rgba(0,206,202,0.15)'] }}
             transition={{ delay: layers[layers.length - 1].delay + 0.4, duration: 1.2, times: [0, 0.5, 1] }}
@@ -304,9 +303,9 @@ export default function FlyerAssembly({ project, onClose }: { project: Project; 
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 2.8, duration: 0.5 }}
         >
-          <h3 className="heading-serif text-xl font-bold text-white">{project.title}</h3>
-          <p className="text-sm mt-1" style={{ color: '#00ceca' }}>{project.category} · {project.year}</p>
-          <p className="text-xs text-white/40 mt-1">{project.shortDesc}</p>
+          <h3 className="heading-serif text-xl font-bold text-ink">{project.title}</h3>
+          <p className="text-sm mt-1" style={{ color: '#009e9b' }}>{project.category} · {project.year}</p>
+          <p className="text-xs text-ink-faint mt-1">{project.shortDesc}</p>
         </motion.div>
       </div>
     </motion.div>

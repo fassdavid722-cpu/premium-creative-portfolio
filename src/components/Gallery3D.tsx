@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect, Suspense } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import { useTexture, Environment, Float, Text } from '@react-three/drei'
+import { useTexture, Environment, Float } from '@react-three/drei'
 import * as THREE from 'three'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Project } from '@/data/portfolio'
@@ -22,9 +22,7 @@ function ProjectCard({
 
   useFrame((_, delta) => {
     if (!meshRef.current) return
-    // Gentle idle float rotation
     meshRef.current.rotation.y += delta * 0.06 * (hovered ? 0.3 : 1)
-    // Scale spring on hover
     const targetScale = hovered ? 1.08 : isActive ? 1.12 : 1
     meshRef.current.scale.lerp(new THREE.Vector3(targetScale, targetScale, targetScale), 0.08)
   })
@@ -39,17 +37,10 @@ function ProjectCard({
         onPointerOver={() => { setHovered(true); document.body.style.cursor = 'pointer' }}
         onPointerOut={() => { setHovered(false); document.body.style.cursor = 'default' }}
       >
-        {/* Card geometry — portrait aspect ratio */}
         <planeGeometry args={[2.2, 2.9, 1, 1]} />
-        <meshStandardMaterial
-          map={texture}
-          roughness={0.15}
-          metalness={0.05}
-          envMapIntensity={0.5}
-        />
+        <meshStandardMaterial map={texture} roughness={0.15} metalness={0.05} envMapIntensity={0.5} />
       </mesh>
 
-      {/* Teal glow edge when hovered */}
       {hovered && (
         <mesh position={position} rotation={rotation}>
           <planeGeometry args={[2.28, 2.98, 1, 1]} />
@@ -75,11 +66,11 @@ function ScrollCamera({ scroll }: { scroll: React.MutableRefObject<number> }) {
 function SceneBackground() {
   return (
     <>
-      <fog attach="fog" args={['#021e31', 10, 30]} />
-      <ambientLight intensity={0.6} color="#90e0df" />
-      <pointLight position={[0, 5, 5]} intensity={1.2} color="#00ceca" />
-      <pointLight position={[-5, -3, 2]} intensity={0.4} color="#032f4c" />
-      <pointLight position={[5, 3, 2]} intensity={0.3} color="#5eecea" />
+      <fog attach="fog" args={['#f7f9fa', 10, 30]} />
+      <ambientLight intensity={0.8} color="#ffffff" />
+      <pointLight position={[0, 5, 5]} intensity={1.0} color="#00ceca" />
+      <pointLight position={[-5, -3, 2]} intensity={0.3} color="#032f4c" />
+      <pointLight position={[5, 3, 2]} intensity={0.2} color="#5eecea" />
     </>
   )
 }
@@ -90,7 +81,6 @@ export default function Gallery3D({ projects }: { projects: Project[] }) {
   const containerRef = useRef<HTMLDivElement>(null)
   const [selected, setSelected] = useState<Project | null>(null)
 
-  // Capture scroll within the gallery container
   useEffect(() => {
     const el = containerRef.current
     if (!el) return
@@ -102,7 +92,6 @@ export default function Gallery3D({ projects }: { projects: Project[] }) {
     return () => el.removeEventListener('wheel', onWheel)
   }, [])
 
-  // Build circular / arc layout positions
   const positions: [number, number, number][] = projects.map((_, i) => {
     const cols = 3
     const row = Math.floor(i / cols)
@@ -125,8 +114,8 @@ export default function Gallery3D({ projects }: { projects: Project[] }) {
       <motion.div
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
         initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }}>
-        <span className="text-xs uppercase tracking-widest text-white/40">Scroll to explore</span>
-        <div className="w-5 h-8 rounded-full border border-white/20 flex items-start justify-center p-1">
+        <span className="text-xs uppercase tracking-widest text-ink-faint">Scroll to explore</span>
+        <div className="w-5 h-8 rounded-full border flex items-start justify-center p-1" style={{ borderColor: 'rgba(3,47,76,0.15)' }}>
           <motion.div className="w-1 h-2 rounded-full" style={{ background: '#00ceca' }}
             animate={{ y: [0, 12, 0] }} transition={{ duration: 1.5, repeat: Infinity }} />
         </div>
@@ -137,12 +126,11 @@ export default function Gallery3D({ projects }: { projects: Project[] }) {
         className="absolute top-6 left-1/2 -translate-x-1/2 z-10"
         initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2 }}>
         <span className="text-xs uppercase tracking-widest px-4 py-2 rounded-full border"
-          style={{ borderColor: 'rgba(0,206,202,0.2)', color: 'rgba(0,206,202,0.7)', background: 'rgba(3,47,76,0.5)' }}>
+          style={{ borderColor: 'rgba(0,206,202,0.2)', color: '#009e9b', background: 'rgba(255,255,255,0.8)' }}>
           Click any project to watch it assemble
         </span>
       </motion.div>
 
-      {/* Three.js canvas */}
       <Canvas
         camera={{ position: [0, 0, 8], fov: 55 }}
         className="gallery-3d-canvas"
@@ -162,11 +150,10 @@ export default function Gallery3D({ projects }: { projects: Project[] }) {
               isActive={selected?.id === project.id}
             />
           ))}
-          <Environment preset="night" />
+          <Environment preset="apartment" />
         </Suspense>
       </Canvas>
 
-      {/* Flyer assembly overlay */}
       <AnimatePresence>
         {selected && (
           <FlyerAssembly

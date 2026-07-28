@@ -8,16 +8,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,100..900,0..100,0..1;1,9..144,100..900,0..100,0..1&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
     <title>Archworks · Daniels I. Daniels — Creative Design Studio</title>
-    <script>
-      window.addEventListener('error', function(e) {
-        document.body.innerHTML = '<div style="padding:40px;color:white;font-family:monospace;background:#032f4c;min-height:100vh"><h1>JS Error Caught</h1><pre>' + (e.error?.stack || e.message) + '</pre></div>';
-      });
-      window.addEventListener('unhandledrejection', function(e) {
-        document.body.innerHTML = '<div style="padding:40px;color:white;font-family:monospace;background:#032f4c;min-height:100vh"><h1>Promise Error</h1><pre>' + (e.reason?.stack || e.reason) + '</pre></div>';
-      });
-    </script>
   </head>
   <body>
-    <div id="root"><div style="padding:40px;color:#00ceca;font-family:monospace">Loading Archworks...</div></div>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

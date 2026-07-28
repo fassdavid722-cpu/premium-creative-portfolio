@@ -15,7 +15,7 @@ const tools = [
   { name: 'Figma', color: '#A259FF' },
   { name: 'Canva', color: '#00C4CC' },
   { name: 'After Effects', color: '#9999FF' },
-  { name: 'AI Tools', color: '#00ceca' },
+  { name: 'AI Tools', color: '#009e9b' },
 ]
 
 const timeline = [
@@ -36,14 +36,14 @@ export default function About() {
               I'm Daniels.<br />
               <span className="text-teal-grad">Designer. Medic. Builder.</span>
             </h1>
-            <p className="text-white/60 text-lg leading-relaxed mb-5">
-              I'm Daniels I. Daniels — the founder and creative director of <strong className="text-white">Archworks</strong>. I build visual identities and social media systems that help brands communicate, attract, and convert.
+            <p className="text-ink-muted text-lg leading-relaxed mb-5">
+              I'm Daniels I. Daniels — the founder and creative director of <strong className="text-ink">Archworks</strong>. I build visual identities and social media systems that help brands communicate, attract, and convert.
             </p>
-            <p className="text-white/60 text-lg leading-relaxed mb-5">
-              What makes me different? I have a dual background — <strong className="text-white">design and medicine</strong>. That means I approach branding the way a doctor approaches diagnosis: systematically, analytically, and with the end result in mind.
+            <p className="text-ink-muted text-lg leading-relaxed mb-5">
+              What makes me different? I have a dual background — <strong className="text-ink">design and medicine</strong>. That means I approach branding the way a doctor approaches diagnosis: systematically, analytically, and with the end result in mind.
             </p>
-            <p className="text-white/60 text-lg leading-relaxed mb-8">
-              My mission is simple: every brand I touch should make people <span style={{ color: '#00ceca' }}>stop, look, and take action</span>.
+            <p className="text-ink-muted text-lg leading-relaxed mb-8">
+              My mission is simple: every brand I touch should make people <span style={{ color: '#009e9b' }}>stop, look, and take action</span>.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <Link to="/contact" className="btn-primary">Work With Me <ArrowRight size={16} /></Link>
@@ -54,32 +54,32 @@ export default function About() {
           </motion.div>
 
           <motion.div {...fadeUp} transition={{ duration: 0.7, delay: 0.2 }} className="relative">
-            <div className="rounded-3xl overflow-hidden border border-white/10">
+            <div className="rounded-3xl overflow-hidden border border-ink/[0.08]">
               <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f44?q=80&w=1200"
                 alt="Daniels I. Daniels" className="w-full aspect-[4/5] object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
             </div>
             <div className="absolute -bottom-5 -left-5 grid grid-cols-2 gap-3">
               <div className="rounded-2xl p-4 border backdrop-blur-xl" style={{ background: 'rgba(2,30,49,0.9)', borderColor: 'rgba(0,206,202,0.2)' }}>
                 <div className="heading-serif text-3xl font-bold text-teal-grad">50+</div>
-                <div className="text-xs text-white/40">Projects</div>
+                <div className="text-xs text-ink-faint">Projects</div>
               </div>
               <div className="rounded-2xl p-4 border backdrop-blur-xl" style={{ background: 'rgba(2,30,49,0.9)', borderColor: 'rgba(0,206,202,0.2)' }}>
                 <div className="heading-serif text-3xl font-bold text-teal-grad">30+</div>
-                <div className="text-xs text-white/40">Clients</div>
+                <div className="text-xs text-ink-faint">Clients</div>
               </div>
             </div>
           </motion.div>
         </div>
 
         {/* Philosophy */}
-        <section className="py-16 border-y border-white/5 mb-16">
+        <section className="py-16 border-y border-ink/[0.06] mb-16">
           <div className="max-w-3xl mx-auto text-center">
             <p className="section-label">The Philosophy</p>
             <blockquote className="heading-serif text-3xl md:text-4xl font-bold leading-snug">
               "A logo is not a brand. A colour is not a system. Real design is what happens when strategy meets creativity and produces <span className="text-teal-grad">results that matter</span>."
             </blockquote>
-            <p className="text-white/40 mt-4">— Daniels I. Daniels, Archworks</p>
+            <p className="text-ink-faint mt-4">— Daniels I. Daniels, Archworks</p>
           </div>
         </section>
 
@@ -90,7 +90,7 @@ export default function About() {
           <div className="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto">
             {skills.map((s, i) => (
               <motion.span key={i} {...fadeUp} transition={{ delay: i * 0.04 }}
-                className="px-4 py-2 rounded-full text-sm font-medium border border-white/10 text-white/60 hover:border-teal/30 hover:text-teal transition-all duration-300 cursor-default">
+                className="px-4 py-2 rounded-full text-sm font-medium border border-ink/[0.08] text-ink-muted hover:border-teal/30 hover:text-teal transition-all duration-300 cursor-default">
                 {s}
               </motion.span>
             ))}
@@ -109,7 +109,7 @@ export default function About() {
                   style={{ background: `${t.color}22`, color: t.color }}>
                   {t.name.slice(0, 2)}
                 </div>
-                <p className="text-sm font-medium text-white/70 group-hover:text-teal transition-colors">{t.name}</p>
+                <p className="text-sm font-medium text-ink/70 group-hover:text-teal transition-colors">{t.name}</p>
               </motion.div>
             ))}
           </div>
@@ -125,9 +125,9 @@ export default function About() {
                 className="card-arch p-6 flex gap-5 gradient-border">
                 <div className="heading-serif text-xl font-bold text-teal-grad min-w-[52px]">{e.year}</div>
                 <div>
-                  <p className="font-semibold text-white">{e.role}</p>
-                  <p className="text-sm mb-1" style={{ color: '#00ceca' }}>{e.co}</p>
-                  <p className="text-white/45 text-sm">{e.desc}</p>
+                  <p className="font-semibold text-ink">{e.role}</p>
+                  <p className="text-sm mb-1" style={{ color: '#009e9b' }}>{e.co}</p>
+                  <p className="text-ink-faint text-sm">{e.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -140,7 +140,7 @@ export default function About() {
             style={{ background: 'radial-gradient(circle, #00ceca 0%, transparent 70%)' }} />
           <div className="relative z-10">
             <h2 className="heading-serif text-2xl md:text-3xl font-bold mb-3">Sounds like the right fit?</h2>
-            <p className="text-white/50 mb-6">Let's talk about what your brand needs.</p>
+            <p className="text-ink-muted mb-6">Let's talk about what your brand needs.</p>
             <Link to="/contact" className="btn-primary">Start A Project <ArrowRight size={16} /></Link>
           </div>
         </div>
