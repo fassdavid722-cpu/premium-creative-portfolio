@@ -1,6 +1,6 @@
 import { useRef, useState, Suspense, useMemo, useEffect } from 'react'
-import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import { useTexture, Environment, Float, ContactShadows, MeshReflectorMaterial, RoundedBox } from '@react-three/drei'
+import { Canvas, useFrame } from '@react-three/fiber'
+import { useTexture, Float, ContactShadows } from '@react-three/drei'
 import * as THREE from 'three'
 import { Project } from '@/data/portfolio'
 import CameraRig from '@/engine/CameraRig'
@@ -19,14 +19,9 @@ function FloatingCard({
   const [hovered, setHovered] = useState(false)
   const texture = useTexture(project.image)
 
-  texture.anisotropy = 16
-  texture.colorSpace = THREE.SRGBColorSpace
-
   useFrame((state, delta) => {
     if (!meshRef.current) return
-    // Gentle idle rotation
     meshRef.current.rotation.y += delta * 0.06
-    // Hover scale
     const target = hovered ? 1.12 : 1
     meshRef.current.scale.lerp(new THREE.Vector3(target, target, target), 0.06)
   })
@@ -34,10 +29,11 @@ function FloatingCard({
   return (
     <Float speed={1.2} rotationIntensity={0.08} floatIntensity={0.35}>
       <group ref={meshRef} position={position} rotation={rotation}>
-        {/* Card backing (frame) */}
-        <RoundedBox args={[1.68, 2.18, 0.05]} radius={0.04} smoothness={4} position={[0, 0, -0.025]}>
-          <meshStandardMaterial color="#032f4c" roughness={0.3} metalness={0.6} />
-        </RoundedBox>
+        {/* Card backing */}
+        <mesh position={[0, 0, -0.03]} castShadow>
+          <boxGeometry args={[1.7, 2.2, 0.04]} />
+          <meshStandardMaterial color="#032f4c" roughness={0.3} metalness={0.5} />
+        </mesh>
 
         {/* Card image */}
         <mesh
@@ -47,25 +43,20 @@ function FloatingCard({
           castShadow
         >
           <planeGeometry args={[1.6, 2.1]} />
-          <meshStandardMaterial
-            map={texture}
-            roughness={0.1}
-            metalness={0.25}
-            envMapIntensity={1.0}
-          />
+          <meshStandardMaterial map={texture} roughness={0.1} metalness={0.25} />
         </mesh>
 
-        {/* Glow plane behind card on hover */}
+        {/* Glow plane behind on hover */}
         {hovered && (
           <mesh position={[0, 0, -0.06]}>
-            <planeGeometry args={[1.8, 2.3]} />
-            <meshBasicMaterial color="#00ceca" transparent opacity={0.15} />
+            <planeGeometry args={[1.85, 2.35]} />
+            <meshBasicMaterial color="#00ceca" transparent opacity={0.12} />
           </mesh>
         )}
 
-        {/* Category label strip */}
-        <mesh position={[0, -1.35, 0.05]}>
-          <planeGeometry args={[1.4, 0.04]} />
+        {/* Teal accent line */}
+        <mesh position={[0, -1.35, 0.03]}>
+          <planeGeometry args={[1.4, 0.03]} />
           <meshBasicMaterial color="#00ceca" transparent opacity={0.6} />
         </mesh>
       </group>
@@ -73,26 +64,14 @@ function FloatingCard({
   )
 }
 
-// ── Gallery room architecture ──
+// ── Gallery room architecture (simplified — no MeshReflectorMaterial) ──
 function GalleryArchitecture() {
   return (
     <group>
-      {/* Floor with reflections */}
+      {/* Floor */}
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -2, 0]} receiveShadow>
         <planeGeometry args={[30, 80]} />
-        <MeshReflectorMaterial
-          blur={[300, 100]}
-          resolution={1024}
-          mixBlur={1}
-          mixStrength={35}
-          roughness={0.7}
-          depthScale={1.1}
-          minDepthThreshold={0.4}
-          maxDepthThreshold={1.2}
-          color="#e8edf2"
-          metalness={0.3}
-          mirror={0.35}
-        />
+        <meshStandardMaterial color="#e8edf2" roughness={0.2} metalness={0.4} />
       </mesh>
 
       {/* Ceiling */}
@@ -113,7 +92,7 @@ function GalleryArchitecture() {
         <meshStandardMaterial color="#eef2f7" roughness={0.9} />
       </mesh>
 
-      {/* Accent strips on walls — teal glow lines */}
+      {/* Teal accent strips on walls */}
       <mesh position={[-5.98, 0.3, 0]} rotation={[0, Math.PI / 2, 0]}>
         <planeGeometry args={[80, 0.04]} />
         <meshBasicMaterial color="#00ceca" toneMapped={false} />
@@ -123,18 +102,18 @@ function GalleryArchitecture() {
         <meshBasicMaterial color="#00ceca" toneMapped={false} />
       </mesh>
 
-      {/* Ceiling light strips */}
+      {/* Ceiling light panels */}
       {[-4, 0, 4].map((x, i) => (
         <mesh key={i} position={[x, 5.9, -8]} rotation={[Math.PI / 2, 0, 0]}>
           <planeGeometry args={[2, 12]} />
-          <meshBasicMaterial color="#ffffff" transparent opacity={0.3} toneMapped={false} />
+          <meshBasicMaterial color="#ffffff" transparent opacity={0.4} toneMapped={false} />
         </mesh>
       ))}
     </group>
   )
 }
 
-// ── Main Gallery Scene content ──
+// ── Gallery Scene content ──
 export function GalleryScene({
   projects,
   scrollProgress,
@@ -172,7 +151,7 @@ export function GalleryScene({
 
       <LightingRig
         ambientColor="#ffffff"
-        ambientIntensity={0.55}
+        ambientIntensity={0.6}
         accentColor="#00ceca"
         mouseRef={mouseRef}
         spotlights={[
@@ -198,7 +177,6 @@ export function GalleryScene({
             onSelect={onSelect}
           />
         ))}
-        <Environment preset="apartment" />
       </Suspense>
 
       <ContactShadows position={[0, -1.99, 0]} opacity={0.35} scale={50} blur={2.5} far={8} />
@@ -206,7 +184,7 @@ export function GalleryScene({
   )
 }
 
-// ── Canvas wrapper — fixed position canvas + scroll spacer ──
+// ── Canvas wrapper ──
 export default function GalleryCanvas({
   projects,
   onSelect,
@@ -219,18 +197,11 @@ export default function GalleryCanvas({
 
   useEffect(() => {
     const onScroll = () => {
-      // Calculate scroll progress within the gallery section
       const galleryEl = document.getElementById('gallery-scroll-zone')
-      if (!galleryEl) {
-        scrollRef.current = 0
-        return
-      }
+      if (!galleryEl) { scrollRef.current = 0; return }
       const rect = galleryEl.getBoundingClientRect()
       const total = rect.height - window.innerHeight
-      if (total <= 0) {
-        scrollRef.current = 0
-        return
-      }
+      if (total <= 0) { scrollRef.current = 0; return }
       const scrolled = Math.min(Math.max(-rect.top, 0), total)
       scrollRef.current = scrolled / total
     }
@@ -248,23 +219,20 @@ export default function GalleryCanvas({
   }, [])
 
   return (
-    <>
-      {/* Fixed canvas — stays in place while the scroll zone scrolls past */}
-      <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100vh', zIndex: 1, pointerEvents: 'auto' }}>
-        <Canvas
-          shadows
-          camera={{ position: [0, 1, 12], fov: 50 }}
-          dpr={[1, 2]}
-          gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
-        >
-          <GalleryScene
-            projects={projects}
-            scrollProgress={scrollRef}
-            mouseRef={mouseRef}
-            onSelect={onSelect}
-          />
-        </Canvas>
-      </div>
-    </>
+    <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100vh', zIndex: 1 }}>
+      <Canvas
+        shadows
+        camera={{ position: [0, 1, 12], fov: 50 }}
+        dpr={[1, 2]}
+        gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
+      >
+        <GalleryScene
+          projects={projects}
+          scrollProgress={scrollRef}
+          mouseRef={mouseRef}
+          onSelect={onSelect}
+        />
+      </Canvas>
+    </div>
   )
 }
