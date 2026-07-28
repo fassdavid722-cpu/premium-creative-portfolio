@@ -8,39 +8,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,100..900,0..100,0..1;1,9..144,100..900,0..100,0..1&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
     <title>Archworks · Daniels I. Daniels — Creative Design Studio</title>
-    <script>
-      window.__errors = [];
-      window.addEventListener('error', function(e) {
-        window.__errors.push({
-          type: 'error',
-          message: e.message,
-          filename: e.filename,
-          line: e.lineno,
-          stack: e.error ? e.error.stack : null
-        });
-        var div = document.getElementById('debug');
-        if (div) {
-          div.innerHTML = '<pre style="color:red;padding:20px;font-family:monospace;white-space:pre-wrap">' +
-            'ERROR: ' + e.message + '\\n' +
-            (e.error ? e.error.stack : '') + '</pre>';
-        }
-      });
-      window.addEventListener('unhandledrejection', function(e) {
-        window.__errors.push({
-          type: 'promise',
-          reason: e.reason ? (e.reason.stack || e.reason.message || String(e.reason)) : String(e.reason)
-        });
-        var div = document.getElementById('debug');
-        if (div) {
-          div.innerHTML = '<pre style="color:orange;padding:20px;font-family:monospace;white-space:pre-wrap">' +
-            'PROMISE REJECTION: ' + (e.reason ? (e.reason.stack || e.reason.message || String(e.reason)) : 'unknown') + '</pre>';
-        }
-      });
-    </script>
   </head>
   <body>
     <div id="root"></div>
-    <div id="debug"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
