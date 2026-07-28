@@ -3,12 +3,12 @@ import { Instagram, Linkedin, Mail, ArrowUpRight } from 'lucide-react'
 
 export default function Footer() {
   return (
-    <footer className="border-t" style={{ borderColor: 'rgba(3,47,76,0.08)', background: '#ffffff' }}>
+    <footer className="border-t" style={{ borderColor: 'rgba(0,206,202,0.08)', background: '#0f1626' }}>
       <div className="container-arch py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
           <div className="md:col-span-2">
             <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="w-9 h-9 rounded-lg flex items-center justify-center font-bold text-white text-lg" style={{ background: '#00ceca' }}>A</div>
+              <div className="w-9 h-9 rounded-lg flex items-center justify-center font-bold text-ink text-lg" style={{ background: '#00ceca' }}>A</div>
               <span className="text-xl font-bold text-ink">Archworks<span style={{ color: '#00ceca' }}>.</span></span>
             </Link>
             <p className="text-ink-muted text-sm leading-relaxed max-w-sm mb-6">
@@ -20,7 +20,7 @@ export default function Footer() {
                 { icon: Linkedin, href: '#' },
                 { icon: Mail, href: 'mailto:hello@archworks.studio' },
               ].map((s, i) => (
-                <a key={i} href={s.href} className="w-10 h-10 rounded-lg flex items-center justify-center transition-all hover:scale-110" style={{ background: 'rgba(0,206,202,0.08)', color: '#009e9b' }}>
+                <a key={i} href={s.href} className="w-10 h-10 rounded-lg flex items-center justify-center transition-all hover:scale-110" style={{ background: 'rgba(0,206,202,0.08)', color: '#00ceca' }}>
                   <s.icon size={18} />
                 </a>
               ))}
@@ -55,7 +55,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 border-t flex flex-col md:flex-row items-center justify-between gap-4" style={{ borderColor: 'rgba(3,47,76,0.06)' }}>
+        <div className="pt-8 border-t flex flex-col md:flex-row items-center justify-between gap-4" style={{ borderColor: 'rgba(0,206,202,0.06)' }}>
           <p className="text-xs text-ink-faint">© 2026 Archworks. Designed by Daniels I. Daniels.</p>
           <p className="text-xs text-ink-faint">SPEAK · STAY · SELL</p>
         </div>

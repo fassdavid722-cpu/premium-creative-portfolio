@@ -25,7 +25,7 @@ export default function Blog() {
             <div className="relative overflow-hidden">
               <img src={blogPosts[0].image} alt={blogPosts[0].title}
                 className="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-700" />
-              <span className="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-semibold" style={{ background: 'rgba(0,206,202,0.15)', color: '#009e9b' }}>
+              <span className="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-semibold" style={{ background: 'rgba(0,206,202,0.15)', color: '#00ceca' }}>
                 {blogPosts[0].category}
               </span>
             </div>
@@ -38,7 +38,7 @@ export default function Blog() {
                 {blogPosts[0].title}
               </h2>
               <p className="text-ink-muted leading-relaxed mb-6">{blogPosts[0].excerpt}</p>
-              <span className="inline-flex items-center gap-2 text-sm font-medium" style={{ color: '#009e9b' }}>
+              <span className="inline-flex items-center gap-2 text-sm font-medium" style={{ color: '#00ceca' }}>
                 Read Article <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </span>
             </div>
@@ -52,7 +52,7 @@ export default function Blog() {
                 <div className="relative overflow-hidden">
                   <img src={post.image} alt={post.title}
                     className="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-700" />
-                  <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-xs font-semibold" style={{ background: 'rgba(0,206,202,0.15)', color: '#009e9b' }}>
+                  <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-xs font-semibold" style={{ background: 'rgba(0,206,202,0.15)', color: '#00ceca' }}>
                     {post.category}
                   </span>
                 </div>
@@ -81,9 +81,9 @@ export default function Blog() {
             <div className="flex flex-col sm:flex-row gap-3 max-w-sm mx-auto">
               <input type="email" placeholder="Your email"
                 className="flex-1 px-4 py-3 rounded-xl text-sm text-ink placeholder:text-ink-faint focus:outline-none border transition-all duration-300"
-                style={{ background: 'rgba(4,57,92,0.8)', borderColor: 'rgba(3,47,76,0.08)' }}
+                style={{ background: 'rgba(4,57,92,0.8)', borderColor: 'rgba(0,206,202,0.08)' }}
                 onFocus={e => e.currentTarget.style.borderColor = 'rgba(0,206,202,0.4)'}
-                onBlur={e => e.currentTarget.style.borderColor = 'rgba(3,47,76,0.08)'} />
+                onBlur={e => e.currentTarget.style.borderColor = 'rgba(0,206,202,0.08)'} />
               <button className="btn-primary text-sm py-3">Subscribe</button>
             </div>
           </div>

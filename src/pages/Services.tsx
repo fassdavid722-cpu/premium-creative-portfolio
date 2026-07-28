@@ -32,14 +32,14 @@ export default function Services() {
                   <div className="p-8 md:p-10">
                     <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
                       style={{ background: 'rgba(0,206,202,0.1)' }}>
-                      <Icon size={22} style={{ color: '#009e9b' }} />
+                      <Icon size={22} style={{ color: '#00ceca' }} />
                     </div>
                     <h2 className="heading-serif text-2xl md:text-3xl font-bold mb-1">{s.title}</h2>
-                    <p className="text-sm font-medium mb-4" style={{ color: '#009e9b' }}>{s.tagline}</p>
+                    <p className="text-sm font-medium mb-4" style={{ color: '#00ceca' }}>{s.tagline}</p>
                     <p className="text-ink-muted leading-relaxed mb-6">{s.desc}</p>
                     <div className="text-sm text-ink-faint mb-6">Best for: {s.for}</div>
                     <div className="flex items-center justify-between">
-                      <div className="text-lg font-bold" style={{ color: '#009e9b' }}>{s.price}</div>
+                      <div className="text-lg font-bold" style={{ color: '#00ceca' }}>{s.price}</div>
                       <Link to="/contact" className="btn-primary text-sm py-2.5 px-5">
                         Get a Quote <ArrowRight size={15} />
                       </Link>
@@ -55,7 +55,7 @@ export default function Services() {
                         <li key={j} className="flex items-center gap-3 text-ink-light text-sm">
                           <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
                             style={{ background: 'rgba(0,206,202,0.12)' }}>
-                            <Check size={12} style={{ color: '#009e9b' }} />
+                            <Check size={12} style={{ color: '#00ceca' }} />
                           </div>
                           {item}
                         </li>

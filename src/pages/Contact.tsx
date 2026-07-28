@@ -53,18 +53,18 @@ export default function Contact() {
                   <input type="text" required value={form.name} onChange={e => up('name', e.target.value)}
                     placeholder="Your full name"
                     className="w-full px-4 py-3 rounded-xl text-sm text-ink placeholder:text-ink-faint focus:outline-none border transition-all duration-300"
-                    style={{ background: '#ffffff', borderColor: 'rgba(3,47,76,0.08)' }}
+                    style={{ background: '#0f1626', borderColor: 'rgba(0,206,202,0.08)' }}
                     onFocus={e => e.currentTarget.style.borderColor = 'rgba(0,206,202,0.4)'}
-                    onBlur={e => e.currentTarget.style.borderColor = 'rgba(3,47,76,0.08)'} />
+                    onBlur={e => e.currentTarget.style.borderColor = 'rgba(0,206,202,0.08)'} />
                 </div>
                 <div>
                   <label className="block text-xs font-semibold uppercase tracking-wider mb-2 text-ink-muted">Email *</label>
                   <input type="email" required value={form.email} onChange={e => up('email', e.target.value)}
                     placeholder="you@example.com"
                     className="w-full px-4 py-3 rounded-xl text-sm text-ink placeholder:text-ink-faint focus:outline-none border transition-all duration-300"
-                    style={{ background: '#ffffff', borderColor: 'rgba(3,47,76,0.08)' }}
+                    style={{ background: '#0f1626', borderColor: 'rgba(0,206,202,0.08)' }}
                     onFocus={e => e.currentTarget.style.borderColor = 'rgba(0,206,202,0.4)'}
-                    onBlur={e => e.currentTarget.style.borderColor = 'rgba(3,47,76,0.08)'} />
+                    onBlur={e => e.currentTarget.style.borderColor = 'rgba(0,206,202,0.08)'} />
                 </div>
               </div>
 
@@ -73,9 +73,9 @@ export default function Contact() {
                 <input type="text" value={form.instagram} onChange={e => up('instagram', e.target.value)}
                   placeholder="@yourbrand"
                   className="w-full px-4 py-3 rounded-xl text-sm text-ink placeholder:text-ink-faint focus:outline-none border transition-all duration-300"
-                  style={{ background: '#ffffff', borderColor: 'rgba(3,47,76,0.08)' }}
+                  style={{ background: '#0f1626', borderColor: 'rgba(0,206,202,0.08)' }}
                   onFocus={e => e.currentTarget.style.borderColor = 'rgba(0,206,202,0.4)'}
-                  onBlur={e => e.currentTarget.style.borderColor = 'rgba(3,47,76,0.08)'} />
+                  onBlur={e => e.currentTarget.style.borderColor = 'rgba(0,206,202,0.08)'} />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -83,18 +83,18 @@ export default function Contact() {
                   <label className="block text-xs font-semibold uppercase tracking-wider mb-2 text-ink-muted">Service Needed *</label>
                   <select required value={form.service} onChange={e => up('service', e.target.value)}
                     className="w-full px-4 py-3 rounded-xl text-sm text-ink focus:outline-none border transition-all duration-300"
-                    style={{ background: '#ffffff', borderColor: 'rgba(3,47,76,0.08)', color: form.service ? '#fff' : '#aab8c8' }}>
-                    <option value="" className="bg-white">Select a service</option>
-                    {projectTypes.map(t => <option key={t} value={t} className="bg-white">{t}</option>)}
+                    style={{ background: '#0f1626', borderColor: 'rgba(0,206,202,0.08)', color: form.service ? '#0f1626' : '#aab8c8' }}>
+                    <option value="" className="bg-navy-card">Select a service</option>
+                    {projectTypes.map(t => <option key={t} value={t} className="bg-navy-card">{t}</option>)}
                   </select>
                 </div>
                 <div>
                   <label className="block text-xs font-semibold uppercase tracking-wider mb-2 text-ink-muted">Budget *</label>
                   <select required value={form.budget} onChange={e => up('budget', e.target.value)}
                     className="w-full px-4 py-3 rounded-xl text-sm text-ink focus:outline-none border transition-all duration-300"
-                    style={{ background: '#ffffff', borderColor: 'rgba(3,47,76,0.08)', color: form.budget ? '#fff' : '#aab8c8' }}>
-                    <option value="" className="bg-white">Select a budget</option>
-                    {budgets.map(b => <option key={b} value={b} className="bg-white">{b}</option>)}
+                    style={{ background: '#0f1626', borderColor: 'rgba(0,206,202,0.08)', color: form.budget ? '#0f1626' : '#aab8c8' }}>
+                    <option value="" className="bg-navy-card">Select a budget</option>
+                    {budgets.map(b => <option key={b} value={b} className="bg-navy-card">{b}</option>)}
                   </select>
                 </div>
               </div>
@@ -105,16 +105,16 @@ export default function Contact() {
                   placeholder="Tell me about your brand, what you need, and your timeline..."
                   rows={5}
                   className="w-full px-4 py-3 rounded-xl text-sm text-ink placeholder:text-ink-faint focus:outline-none border transition-all duration-300 resize-none"
-                  style={{ background: '#ffffff', borderColor: 'rgba(3,47,76,0.08)' }}
+                  style={{ background: '#0f1626', borderColor: 'rgba(0,206,202,0.08)' }}
                   onFocus={e => e.currentTarget.style.borderColor = 'rgba(0,206,202,0.4)'}
-                  onBlur={e => e.currentTarget.style.borderColor = 'rgba(3,47,76,0.08)'} />
+                  onBlur={e => e.currentTarget.style.borderColor = 'rgba(0,206,202,0.08)'} />
               </div>
 
               <button type="submit" className="btn-primary w-full justify-center">
                 {sent ? 'Message Sent! ✓' : 'Send Message'} <Send size={16} />
               </button>
               {sent && (
-                <p className="text-center text-sm" style={{ color: '#009e9b' }}>
+                <p className="text-center text-sm" style={{ color: '#00ceca' }}>
                   Thanks! I'll get back to you within 24 hours.
                 </p>
               )}
@@ -126,7 +126,7 @@ export default function Contact() {
             <div className="card-arch p-6 gradient-border">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: 'rgba(0,206,202,0.1)' }}>
-                  <Mail size={18} style={{ color: '#009e9b' }} />
+                  <Mail size={18} style={{ color: '#00ceca' }} />
                 </div>
                 <div>
                   <p className="text-xs uppercase tracking-widest text-ink-faint">Email</p>
@@ -135,7 +135,7 @@ export default function Contact() {
               </div>
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: 'rgba(0,206,202,0.1)' }}>
-                  <MessageCircle size={18} style={{ color: '#009e9b' }} />
+                  <MessageCircle size={18} style={{ color: '#00ceca' }} />
                 </div>
                 <div>
                   <p className="text-xs uppercase tracking-widest text-ink-faint">WhatsApp</p>

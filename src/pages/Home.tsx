@@ -39,7 +39,7 @@ export default function Home() {
         <div className="container-arch relative z-10 text-center py-16">
           <motion.div {...fadeUp} transition={{ duration: 0.6 }}
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border text-sm font-medium mb-8"
-            style={{ borderColor: 'rgba(0,206,202,0.3)', background: 'rgba(0,206,202,0.05)', color: '#009e9b' }}>
+            style={{ borderColor: 'rgba(0,206,202,0.3)', background: 'rgba(0,206,202,0.05)', color: '#00ceca' }}>
             <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: '#00ceca' }} />
             Available for new projects
           </motion.div>
@@ -56,7 +56,7 @@ export default function Home() {
           </motion.p>
           <motion.p {...fadeUp} transition={{ duration: 0.6, delay: 0.35 }}
             className="text-base font-semibold tracking-wide mb-10 glow-teal"
-            style={{ color: '#009e9b' }}>
+            style={{ color: '#00ceca' }}>
             I design to make you SPEAK · STAY · SELL
           </motion.p>
 
@@ -73,7 +73,7 @@ export default function Home() {
       </section>
 
       {/* MARQUEE */}
-      <section className="py-6 border-y overflow-hidden" style={{ background: 'rgba(0,206,202,0.03)', borderColor: 'rgba(3,47,76,0.06)' }}>
+      <section className="py-6 border-y overflow-hidden" style={{ background: 'rgba(0,206,202,0.03)', borderColor: 'rgba(0,206,202,0.06)' }}>
         <div className="marquee-track">
           {[...marqueeItems, ...marqueeItems].map((item, i) => (
             <span key={i} className="heading-serif text-2xl md:text-3xl font-medium text-ink-faint mx-8 flex items-center gap-8">
@@ -85,7 +85,7 @@ export default function Home() {
       </section>
 
       {/* STATS */}
-      <section className="py-12 border-b" style={{ borderColor: 'rgba(3,47,76,0.06)' }}>
+      <section className="py-12 border-b" style={{ borderColor: 'rgba(0,206,202,0.06)' }}>
         <div className="container-arch">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {stats.map((s, i) => (
@@ -116,11 +116,11 @@ export default function Home() {
               <motion.div key={project.id} {...fadeUp} transition={{ duration: 0.6, delay: i * 0.1 }}
                 className={i === 0 ? 'md:col-span-2' : ''}>
                 <Link to={`/portfolio/${project.slug}`} className="group block relative overflow-hidden rounded-2xl border transition-all duration-500 hover:shadow-xl"
-                  style={{ borderColor: 'rgba(3,47,76,0.06)', boxShadow: '0 2px 12px rgba(3,47,76,0.04)' }}>
+                  style={{ borderColor: 'rgba(0,206,202,0.06)', boxShadow: '0 2px 12px rgba(0,0,0,0.3)' }}>
                   <div className={`relative overflow-hidden ${i === 0 ? 'aspect-[21/9]' : 'aspect-[4/3]'}`}>
                     <img src={project.image} alt={project.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#050810]/90 via-[#050810]/40 to-transparent" />
                   </div>
                   <div className="absolute inset-0 p-6 flex flex-col justify-end">
                     <span className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: '#00ceca' }}>{project.category}</span>
@@ -153,7 +153,7 @@ export default function Home() {
               <motion.div key={i} {...fadeUp} transition={{ delay: i * 0.1 }} className="card-arch p-6">
                 <div className="w-10 h-10 rounded-xl mb-4 flex items-center justify-center"
                   style={{ background: 'rgba(0,206,202,0.1)' }}>
-                  <Sparkles size={20} style={{ color: '#009e9b' }} />
+                  <Sparkles size={20} style={{ color: '#00ceca' }} />
                 </div>
                 <h3 className="font-semibold text-ink mb-2">{c.title}</h3>
                 <p className="text-ink-muted text-sm leading-relaxed">{c.desc}</p>

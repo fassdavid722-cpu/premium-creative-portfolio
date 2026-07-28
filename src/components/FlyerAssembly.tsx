@@ -54,7 +54,7 @@ function getAnimationLayers(project: Project) {
     'Social Media Design': [
       { id: 'bg', type: 'background', delay: 0, dur: 0.6 },
       { id: 'photo', type: 'image', delay: 0.5, dur: 0.9, style: { position: 'absolute', inset: 0, opacity: 0 }, anim: 'bgFadeIn' },
-      { id: 'overlay', type: 'overlay', delay: 1.1, dur: 0.5, style: { position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(3,47,76,0.95) 0%, rgba(3,47,76,0.3) 60%, transparent 100%)', opacity: 0 }, anim: 'bgFadeIn' },
+      { id: 'overlay', type: 'overlay', delay: 1.1, dur: 0.5, style: { position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(5,8,16,0.95) 0%, rgba(0,0,0,0.5) 60%, transparent 100%)', opacity: 0 }, anim: 'bgFadeIn' },
       { id: 'badge', type: 'badge', delay: 1.4, dur: 0.5, style: { position: 'absolute', top: '12%', right: '10%', opacity: 0 }, anim: 'scaleIn' },
       { id: 'headline', type: 'text', delay: 1.8, dur: 0.7, style: { position: 'absolute', bottom: '22%', left: '8%', opacity: 0, maxWidth: '80%' }, anim: 'slideInLeft', content: project.title },
       { id: 'sub', type: 'text-sm', delay: 2.2, dur: 0.5, style: { position: 'absolute', bottom: '13%', left: '8%', opacity: 0 }, anim: 'slideInLeft', content: project.client },
@@ -127,7 +127,7 @@ export default function FlyerAssembly({ project, onClose }: { project: Project; 
       {/* Close button */}
       <button onClick={handleClose}
         className="absolute top-6 right-6 z-50 w-11 h-11 rounded-full border flex items-center justify-center transition-all backdrop-blur-sm"
-        style={{ borderColor: 'rgba(3,47,76,0.1)', background: 'rgba(255,255,255,0.9)', color: '#032f4c' }}>
+        style={{ borderColor: 'rgba(0,206,202,0.1)', background: 'rgba(15,22,38,0.95)', color: '#032f4c' }}>
         <X size={20} />
       </button>
 
@@ -304,7 +304,7 @@ export default function FlyerAssembly({ project, onClose }: { project: Project; 
           transition={{ delay: 2.8, duration: 0.5 }}
         >
           <h3 className="heading-serif text-xl font-bold text-ink">{project.title}</h3>
-          <p className="text-sm mt-1" style={{ color: '#009e9b' }}>{project.category} · {project.year}</p>
+          <p className="text-sm mt-1" style={{ color: '#00ceca' }}>{project.category} · {project.year}</p>
           <p className="text-xs text-ink-faint mt-1">{project.shortDesc}</p>
         </motion.div>
       </div>

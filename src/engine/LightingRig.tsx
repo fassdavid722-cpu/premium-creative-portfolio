@@ -25,7 +25,7 @@ interface LightingRigProps {
  * - Shadow casting
  */
 export default function LightingRig({
-  ambientColor = '#ffffff',
+  ambientColor = '#0f1626',
   ambientIntensity = 0.4,
   spotlights,
   mouseRef,
@@ -54,7 +54,7 @@ export default function LightingRig({
   return (
     <>
       <ambientLight color={ambientColor} intensity={ambientIntensity} />
-      <hemisphereLight args={['#ffffff', '#f0f4f8', 0.3]} />
+      <hemisphereLight args={['#0f1626', '#080d18', 0.3]} />
 
       {spotlights.map((spot, i) => (
         <spotLight

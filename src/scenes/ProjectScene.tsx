@@ -68,27 +68,27 @@ function RoomArchitecture({ project }: { project: Project }) {
       {/* Floor */}
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]} receiveShadow>
         <planeGeometry args={[16, 12]} />
-        <meshStandardMaterial color="#e8edf2" roughness={0.2} metalness={0.3} />
+        <meshStandardMaterial color="#1a1f35" roughness={0.2} metalness={0.3} />
       </mesh>
       {/* Back wall */}
       <mesh position={[0, 3, -6]} receiveShadow>
         <planeGeometry args={[16, 6]} />
-        <meshStandardMaterial color="#eef2f7" roughness={0.85} />
+        <meshStandardMaterial color="#1a1f35" roughness={0.85} />
       </mesh>
       {/* Left wall */}
       <mesh rotation={[0, Math.PI / 2, 0]} position={[-8, 3, 0]} receiveShadow>
         <planeGeometry args={[12, 6]} />
-        <meshStandardMaterial color="#eef2f7" roughness={0.85} />
+        <meshStandardMaterial color="#1a1f35" roughness={0.85} />
       </mesh>
       {/* Right wall */}
       <mesh rotation={[0, -Math.PI / 2, 0]} position={[8, 3, 0]} receiveShadow>
         <planeGeometry args={[12, 6]} />
-        <meshStandardMaterial color="#eef2f7" roughness={0.85} />
+        <meshStandardMaterial color="#1a1f35" roughness={0.85} />
       </mesh>
       {/* Ceiling */}
       <mesh rotation={[Math.PI / 2, 0, 0]} position={[0, 6, 0]}>
         <planeGeometry args={[16, 12]} />
-        <meshStandardMaterial color="#f5f7fa" roughness={0.95} />
+        <meshStandardMaterial color="#050810" roughness={0.95} />
       </mesh>
       {/* Teal accent strip */}
       <mesh position={[0, 0.2, -5.98]}>
@@ -98,12 +98,12 @@ function RoomArchitecture({ project }: { project: Project }) {
       {/* Center pedestal */}
       <mesh position={[0, 0.5, -1]} castShadow receiveShadow>
         <cylinderGeometry args={[0.6, 0.7, 1, 32]} />
-        <meshStandardMaterial color="#ffffff" roughness={0.3} metalness={0.1} />
+        <meshStandardMaterial color="#0f1626" roughness={0.3} metalness={0.1} />
       </mesh>
       {/* Desk */}
       <mesh position={[3, 0.75, -4]} castShadow receiveShadow>
         <boxGeometry args={[3, 1.5, 1]} />
-        <meshStandardMaterial color="#ffffff" roughness={0.2} metalness={0.15} />
+        <meshStandardMaterial color="#0f1626" roughness={0.2} metalness={0.15} />
       </mesh>
       {/* Pillar lights */}
       {[-6, 6].map((x, i) => (
@@ -137,17 +137,17 @@ function SceneContent({
 
   return (
     <>
-      <fog attach="fog" args={['#eef2f7', 8, 25]} />
+      <fog attach="fog" args={['#1a1f35', 8, 25]} />
 
       <LightingRig
-        ambientColor="#ffffff"
+        ambientColor="#0f1626"
         ambientIntensity={0.55}
         accentColor="#00ceca"
         mouseRef={mouseRef}
         spotlights={[
-          { position: [0, 5, 2], color: '#ffffff', intensity: 3, target: [0, 1, -2], angle: 0.7, penumbra: 0.6 },
+          { position: [0, 5, 2], color: '#0f1626', intensity: 3, target: [0, 1, -2], angle: 0.7, penumbra: 0.6 },
           { position: [-3, 5, -2], color: '#00ceca', intensity: 1.5, target: [-3, 2, -4], angle: 0.5, penumbra: 0.7 },
-          { position: [3, 5, -3], color: '#ffffff', intensity: 2, target: [3, 2, -4], angle: 0.5, penumbra: 0.7 },
+          { position: [3, 5, -3], color: '#0f1626', intensity: 2, target: [3, 2, -4], angle: 0.5, penumbra: 0.7 },
           { position: [0, 5, -5], color: '#00ceca', intensity: 1.2, target: [0, 2, -6], angle: 0.5, penumbra: 0.7 },
         ]}
       />
@@ -203,10 +203,10 @@ function ImageViewer({ project, imageIndex, onClose }: {
   return (
     <motion.div className="fixed inset-0 z-[200] flex flex-col"
       initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-      style={{ background: 'rgba(247,249,250,0.98)', backdropFilter: 'blur(20px)' }}>
-      <div className="flex items-center justify-between px-6 py-4 border-b" style={{ borderColor: 'rgba(3,47,76,0.06)' }}>
+      style={{ background: 'rgba(5,8,16,0.98)', backdropFilter: 'blur(20px)' }}>
+      <div className="flex items-center justify-between px-6 py-4 border-b" style={{ borderColor: 'rgba(0,206,202,0.06)' }}>
         <div>
-          <p className="text-xs uppercase tracking-widest" style={{ color: '#009e9b' }}>{project.category}</p>
+          <p className="text-xs uppercase tracking-widest" style={{ color: '#00ceca' }}>{project.category}</p>
           <h3 className="font-bold text-ink text-lg">{project.title}</h3>
         </div>
         <button onClick={onClose} className="w-10 h-10 rounded-full flex items-center justify-center transition-all hover:scale-110"
@@ -217,28 +217,28 @@ function ImageViewer({ project, imageIndex, onClose }: {
       <div className="flex-1 flex items-center justify-center overflow-hidden relative"
         onWheel={(e) => { e.preventDefault(); setZoom(z => Math.max(1, Math.min(3, z - e.deltaY * 0.001))) }}>
         <img src={images[idx]} alt={project.title} className="max-w-full max-h-full object-contain rounded-lg"
-          style={{ transform: `scale(${zoom})`, boxShadow: '0 20px 60px rgba(3,47,76,0.15)', transition: 'transform 0.2s' }}
+          style={{ transform: `scale(${zoom})`, boxShadow: '0 20px 60px rgba(0,206,202,0.15)', transition: 'transform 0.2s' }}
           onClick={() => setZoom(1)} draggable={false} />
         {images.length > 1 && (
           <>
             <button onClick={() => setIdx(i => (i - 1 + images.length) % images.length)}
               className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center transition-all hover:scale-110"
-              style={{ background: 'rgba(255,255,255,0.9)', border: '1px solid rgba(3,47,76,0.08)' }}>
+              style={{ background: 'rgba(15,22,38,0.95)', border: '1px solid rgba(0,206,202,0.08)' }}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#032f4c" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg>
             </button>
             <button onClick={() => setIdx(i => (i + 1) % images.length)}
               className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center transition-all hover:scale-110"
-              style={{ background: 'rgba(255,255,255,0.9)', border: '1px solid rgba(3,47,76,0.08)' }}>
+              style={{ background: 'rgba(15,22,38,0.95)', border: '1px solid rgba(0,206,202,0.08)' }}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#032f4c" strokeWidth="2"><path d="M9 18l6-6-6-6"/></svg>
             </button>
           </>
         )}
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-xs"
-          style={{ background: 'rgba(255,255,255,0.9)', border: '1px solid rgba(3,47,76,0.08)', color: '#032f4c' }}>
+          style={{ background: 'rgba(15,22,38,0.95)', border: '1px solid rgba(0,206,202,0.08)', color: '#032f4c' }}>
           Scroll to zoom · {Math.round(zoom * 100)}%
         </div>
       </div>
-      <div className="border-t px-6 py-4" style={{ borderColor: 'rgba(3,47,76,0.06)' }}>
+      <div className="border-t px-6 py-4" style={{ borderColor: 'rgba(0,206,202,0.06)' }}>
         <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
           <div><p className="text-xs uppercase tracking-wider text-ink-faint mb-1">Client</p><p className="text-sm font-medium text-ink">{project.client}</p></div>
           <div><p className="text-xs uppercase tracking-wider text-ink-faint mb-1">Category</p><p className="text-sm font-medium text-ink">{project.category}</p></div>
@@ -301,7 +301,7 @@ export default function ProjectScene({ project, onClose }: { project: Project; o
               <div className="flex flex-wrap gap-2 mb-4">
                 {project.results?.slice(0, 3).map((r, i) => (
                   <span key={i} className="px-3 py-1 rounded-full text-xs font-medium"
-                    style={{ background: 'rgba(0,206,202,0.08)', color: '#009e9b' }}>
+                    style={{ background: 'rgba(0,206,202,0.08)', color: '#00ceca' }}>
                     {r.label}: {r.value}
                   </span>
                 ))}
@@ -314,14 +314,14 @@ export default function ProjectScene({ project, onClose }: { project: Project; o
 
       <button onClick={onClose}
         className="fixed top-6 right-6 z-[150] w-11 h-11 rounded-full flex items-center justify-center transition-all hover:scale-110"
-        style={{ background: 'rgba(255,255,255,0.9)', border: '1px solid rgba(3,47,76,0.08)', color: '#032f4c' }}>
+        style={{ background: 'rgba(15,22,38,0.95)', border: '1px solid rgba(0,206,202,0.08)', color: '#032f4c' }}>
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
       </button>
 
       <motion.div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[140] flex flex-col items-center gap-2"
         initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }}>
         <span className="text-xs uppercase tracking-widest text-ink-faint">Scroll to explore</span>
-        <div className="w-5 h-8 rounded-full border flex items-start justify-center p-1" style={{ borderColor: 'rgba(3,47,76,0.15)' }}>
+        <div className="w-5 h-8 rounded-full border flex items-start justify-center p-1" style={{ borderColor: 'rgba(0,206,202,0.15)' }}>
           <motion.div className="w-1 h-2 rounded-full" style={{ background: '#00ceca' }}
             animate={{ y: [0, 12, 0] }} transition={{ duration: 1.5, repeat: Infinity }} />
         </div>

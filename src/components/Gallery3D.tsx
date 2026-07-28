@@ -66,8 +66,8 @@ function ScrollCamera({ scroll }: { scroll: React.MutableRefObject<number> }) {
 function SceneBackground() {
   return (
     <>
-      <fog attach="fog" args={['#f7f9fa', 10, 30]} />
-      <ambientLight intensity={0.8} color="#ffffff" />
+      <fog attach="fog" args={['#0a0e1a', 10, 30]} />
+      <ambientLight intensity={0.8} color="#0f1626" />
       <pointLight position={[0, 5, 5]} intensity={1.0} color="#00ceca" />
       <pointLight position={[-5, -3, 2]} intensity={0.3} color="#032f4c" />
       <pointLight position={[5, 3, 2]} intensity={0.2} color="#5eecea" />
@@ -115,7 +115,7 @@ export default function Gallery3D({ projects }: { projects: Project[] }) {
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
         initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }}>
         <span className="text-xs uppercase tracking-widest text-ink-faint">Scroll to explore</span>
-        <div className="w-5 h-8 rounded-full border flex items-start justify-center p-1" style={{ borderColor: 'rgba(3,47,76,0.15)' }}>
+        <div className="w-5 h-8 rounded-full border flex items-start justify-center p-1" style={{ borderColor: 'rgba(0,206,202,0.15)' }}>
           <motion.div className="w-1 h-2 rounded-full" style={{ background: '#00ceca' }}
             animate={{ y: [0, 12, 0] }} transition={{ duration: 1.5, repeat: Infinity }} />
         </div>
@@ -126,7 +126,7 @@ export default function Gallery3D({ projects }: { projects: Project[] }) {
         className="absolute top-6 left-1/2 -translate-x-1/2 z-10"
         initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2 }}>
         <span className="text-xs uppercase tracking-widest px-4 py-2 rounded-full border"
-          style={{ borderColor: 'rgba(0,206,202,0.2)', color: '#009e9b', background: 'rgba(255,255,255,0.8)' }}>
+          style={{ borderColor: 'rgba(0,206,202,0.2)', color: '#00ceca', background: 'rgba(15,22,38,0.8)' }}>
           Click any project to watch it assemble
         </span>
       </motion.div>

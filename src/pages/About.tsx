@@ -15,7 +15,7 @@ const tools = [
   { name: 'Figma', color: '#A259FF' },
   { name: 'Canva', color: '#00C4CC' },
   { name: 'After Effects', color: '#9999FF' },
-  { name: 'AI Tools', color: '#009e9b' },
+  { name: 'AI Tools', color: '#00ceca' },
 ]
 
 const timeline = [
@@ -43,7 +43,7 @@ export default function About() {
               What makes me different? I have a dual background — <strong className="text-ink">design and medicine</strong>. That means I approach branding the way a doctor approaches diagnosis: systematically, analytically, and with the end result in mind.
             </p>
             <p className="text-ink-muted text-lg leading-relaxed mb-8">
-              My mission is simple: every brand I touch should make people <span style={{ color: '#009e9b' }}>stop, look, and take action</span>.
+              My mission is simple: every brand I touch should make people <span style={{ color: '#00ceca' }}>stop, look, and take action</span>.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <Link to="/contact" className="btn-primary">Work With Me <ArrowRight size={16} /></Link>
@@ -126,7 +126,7 @@ export default function About() {
                 <div className="heading-serif text-xl font-bold text-teal-grad min-w-[52px]">{e.year}</div>
                 <div>
                   <p className="font-semibold text-ink">{e.role}</p>
-                  <p className="text-sm mb-1" style={{ color: '#009e9b' }}>{e.co}</p>
+                  <p className="text-sm mb-1" style={{ color: '#00ceca' }}>{e.co}</p>
                   <p className="text-ink-faint text-sm">{e.desc}</p>
                 </div>
               </motion.div>

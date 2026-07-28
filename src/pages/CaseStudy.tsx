@@ -14,7 +14,7 @@ export default function CaseStudy() {
       <main className="pt-32 min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="heading-serif text-4xl font-bold mb-4">Project Not Found</h1>
-          <Link to="/portfolio" className="inline-flex items-center gap-2 hover:text-ink transition-colors" style={{ color: '#009e9b' }}>
+          <Link to="/portfolio" className="inline-flex items-center gap-2 hover:text-ink transition-colors" style={{ color: '#00ceca' }}>
             <ArrowLeft size={18} /> Back to Work
           </Link>
         </div>
@@ -36,7 +36,7 @@ export default function CaseStudy() {
             <ArrowLeft size={16} /> Back to Work
           </Link>
           <div className="flex flex-wrap gap-3 mb-3">
-            <span className="px-3 py-1 rounded-full text-sm font-medium" style={{ background: 'rgba(0,206,202,0.12)', color: '#009e9b' }}>{project.category}</span>
+            <span className="px-3 py-1 rounded-full text-sm font-medium" style={{ background: 'rgba(0,206,202,0.12)', color: '#00ceca' }}>{project.category}</span>
             <span className="text-ink-faint text-sm flex items-center">{project.year}</span>
           </div>
           <h1 className="heading-serif text-4xl md:text-6xl font-bold max-w-3xl">{project.title}</h1>
@@ -48,7 +48,7 @@ export default function CaseStudy() {
         <div className="container-arch grid grid-cols-2 md:grid-cols-4 gap-6">
           {[{ l: 'Client', v: project.client }, { l: 'Category', v: project.category }, { l: 'Year', v: project.year }, { l: 'Service', v: project.filter }].map((x, i) => (
             <div key={i}>
-              <p className="text-xs uppercase tracking-widest mb-1" style={{ color: '#009e9b' }}>{x.l}</p>
+              <p className="text-xs uppercase tracking-widest mb-1" style={{ color: '#00ceca' }}>{x.l}</p>
               <p className="text-ink font-medium">{x.v}</p>
             </div>
           ))}
@@ -83,7 +83,7 @@ export default function CaseStudy() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {project.process.map((step, i) => (
               <motion.div key={i} {...fadeUp} transition={{ delay: i * 0.12 }}>
-                <div className="heading-serif text-6xl font-bold opacity-10 mb-2" style={{ color: '#009e9b' }}>0{i + 1}</div>
+                <div className="heading-serif text-6xl font-bold opacity-10 mb-2" style={{ color: '#00ceca' }}>0{i + 1}</div>
                 <h3 className="font-semibold text-ink mb-2 text-lg">{step.phase}</h3>
                 <p className="text-ink-faint text-sm leading-relaxed">{step.detail}</p>
               </motion.div>

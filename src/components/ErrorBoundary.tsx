@@ -19,10 +19,10 @@ export default class ErrorBoundary extends React.Component<{ children: React.Rea
   render() {
     if (this.state.hasError) {
       return (
-        <div style={{ padding: '40px', color: '#1a2538', fontFamily: 'monospace', background: '#f7f9fa', minHeight: '60vh' }} className="flex items-center justify-center">
+        <div style={{ padding: '40px', color: '#e8edf5', fontFamily: 'monospace', background: '#0a0e1a', minHeight: '60vh' }} className="flex items-center justify-center">
           <div className="text-center max-w-2xl">
             <h2 className="text-2xl font-bold mb-4">3D Scene Error</h2>
-            <pre className="text-left p-4 rounded-lg overflow-auto" style={{ background: '#fff', border: '1px solid rgba(3,47,76,0.08)', fontSize: '12px' }}>
+            <pre className="text-left p-4 rounded-lg overflow-auto" style={{ background: '#0f1626', border: '1px solid rgba(0,206,202,0.08)', fontSize: '12px' }}>
               {this.state.error?.message}
               {'\n\n'}
               {this.state.error?.stack}

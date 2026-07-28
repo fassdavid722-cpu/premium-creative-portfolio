@@ -71,25 +71,25 @@ function GalleryArchitecture() {
       {/* Floor */}
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -2, 0]} receiveShadow>
         <planeGeometry args={[30, 80]} />
-        <meshStandardMaterial color="#e8edf2" roughness={0.2} metalness={0.4} />
+        <meshStandardMaterial color="#1a1f35" roughness={0.2} metalness={0.4} />
       </mesh>
 
       {/* Ceiling */}
       <mesh rotation={[Math.PI / 2, 0, 0]} position={[0, 6, 0]}>
         <planeGeometry args={[30, 80]} />
-        <meshStandardMaterial color="#f0f4f8" roughness={0.95} />
+        <meshStandardMaterial color="#0a0f1c" roughness={0.95} />
       </mesh>
 
       {/* Left wall */}
       <mesh rotation={[0, Math.PI / 2, 0]} position={[-6, 2, 0]} receiveShadow>
         <planeGeometry args={[80, 8]} />
-        <meshStandardMaterial color="#eef2f7" roughness={0.9} />
+        <meshStandardMaterial color="#1a1f35" roughness={0.9} />
       </mesh>
 
       {/* Right wall */}
       <mesh rotation={[0, -Math.PI / 2, 0]} position={[6, 2, 0]} receiveShadow>
         <planeGeometry args={[80, 8]} />
-        <meshStandardMaterial color="#eef2f7" roughness={0.9} />
+        <meshStandardMaterial color="#1a1f35" roughness={0.9} />
       </mesh>
 
       {/* Teal accent strips on walls */}
@@ -106,7 +106,7 @@ function GalleryArchitecture() {
       {[-4, 0, 4].map((x, i) => (
         <mesh key={i} position={[x, 5.9, -8]} rotation={[Math.PI / 2, 0, 0]}>
           <planeGeometry args={[2, 12]} />
-          <meshBasicMaterial color="#ffffff" transparent opacity={0.4} toneMapped={false} />
+          <meshBasicMaterial color="#0f1626" transparent opacity={0.4} toneMapped={false} />
         </mesh>
       ))}
     </group>
@@ -147,18 +147,18 @@ export function GalleryScene({
 
   return (
     <>
-      <fog attach="fog" args={['#eef2f7', 10, 40]} />
+      <fog attach="fog" args={['#1a1f35', 10, 40]} />
 
       <LightingRig
-        ambientColor="#ffffff"
+        ambientColor="#0f1626"
         ambientIntensity={0.6}
         accentColor="#00ceca"
         mouseRef={mouseRef}
         spotlights={[
-          { position: [0, 5, 8], color: '#ffffff', intensity: 2.5, target: [0, 0, 4], angle: 0.6, penumbra: 0.8 },
-          { position: [-3, 5, -4], color: '#ffffff', intensity: 2, target: [-3, 0, -4], angle: 0.5, penumbra: 0.7 },
+          { position: [0, 5, 8], color: '#0f1626', intensity: 2.5, target: [0, 0, 4], angle: 0.6, penumbra: 0.8 },
+          { position: [-3, 5, -4], color: '#0f1626', intensity: 2, target: [-3, 0, -4], angle: 0.5, penumbra: 0.7 },
           { position: [3, 5, -12], color: '#00ceca', intensity: 1.8, target: [3, 0, -12], angle: 0.5, penumbra: 0.7 },
-          { position: [-3, 5, -20], color: '#ffffff', intensity: 2, target: [-3, 0, -20], angle: 0.5, penumbra: 0.7 },
+          { position: [-3, 5, -20], color: '#0f1626', intensity: 2, target: [-3, 0, -20], angle: 0.5, penumbra: 0.7 },
           { position: [3, 5, -28], color: '#00ceca', intensity: 1.5, target: [3, 0, -28], angle: 0.5, penumbra: 0.7 },
         ]}
       />

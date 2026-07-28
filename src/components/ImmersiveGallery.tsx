@@ -47,20 +47,20 @@ export default function ImmersiveGallery() {
                 className="text-ink-muted text-lg max-w-xl"
               >
                 Scroll through a 3D gallery space. Click any project to enter an immersive room where the work lives naturally.
-                <span className="block mt-1" style={{ color: '#009e9b' }}>Click objects inside the room to inspect them up close.</span>
+                <span className="block mt-1" style={{ color: '#00ceca' }}>Click objects inside the room to inspect them up close.</span>
               </motion.p>
             </div>
 
             {/* View toggle */}
-            <div className="flex items-center gap-2 p-1 rounded-xl border" style={{ borderColor: 'rgba(3,47,76,0.08)', background: '#ffffff' }}>
+            <div className="flex items-center gap-2 p-1 rounded-xl border" style={{ borderColor: 'rgba(0,206,202,0.08)', background: '#0f1626' }}>
               <button onClick={() => setView('immersive')}
                 className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all"
-                style={view === 'immersive' ? { background: '#00ceca', color: '#fff' } : { color: '#7a8a9e' }}>
+                style={view === 'immersive' ? { background: '#00ceca', color: '#0f1626' } : { color: '#7a8a9e' }}>
                 <Layers size={15} /> 3D Walkthrough
               </button>
               <button onClick={() => setView('grid')}
                 className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all"
-                style={view === 'grid' ? { background: '#00ceca', color: '#fff' } : { color: '#7a8a9e' }}>
+                style={view === 'grid' ? { background: '#00ceca', color: '#0f1626' } : { color: '#7a8a9e' }}>
                 <Grid3x3 size={15} /> Grid View
               </button>
             </div>
@@ -72,7 +72,7 @@ export default function ImmersiveGallery() {
       {view === 'immersive' && (
         <>
           <Suspense fallback={
-            <div className="h-screen flex items-center justify-center" style={{ background: '#f7f9fa' }}>
+            <div className="h-screen flex items-center justify-center" style={{ background: '#0a0e1a' }}>
               <div className="text-center">
                 <div className="w-12 h-12 rounded-full border-2 animate-spin mx-auto mb-4"
                   style={{ borderColor: '#00ceca', borderTopColor: 'transparent' }} />
@@ -95,7 +95,7 @@ export default function ImmersiveGallery() {
                 <div className="glass-panel p-5 pointer-events-auto">
                   <div className="flex items-center gap-2 mb-2">
                     <Sparkles size={16} style={{ color: '#00ceca' }} />
-                    <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: '#009e9b' }}>
+                    <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: '#00ceca' }}>
                       Immersive Mode
                     </span>
                   </div>
@@ -113,7 +113,7 @@ export default function ImmersiveGallery() {
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2 }}
           >
             <span className="text-xs uppercase tracking-widest text-ink-faint">Scroll to explore</span>
-            <div className="w-5 h-8 rounded-full border flex items-start justify-center p-1" style={{ borderColor: 'rgba(3,47,76,0.15)' }}>
+            <div className="w-5 h-8 rounded-full border flex items-start justify-center p-1" style={{ borderColor: 'rgba(0,206,202,0.15)' }}>
               <motion.div className="w-1 h-2 rounded-full" style={{ background: '#00ceca' }}
                 animate={{ y: [0, 12, 0] }} transition={{ duration: 1.5, repeat: Infinity }} />
             </div>
@@ -130,8 +130,8 @@ export default function ImmersiveGallery() {
                 <button key={f} onClick={() => setActive(f)}
                   className="px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300"
                   style={active === f
-                    ? { background: '#00ceca', color: '#fff' }
-                    : { border: '1px solid rgba(3,47,76,0.08)', color: '#7a8a9e', background: '#fff' }}>
+                    ? { background: '#00ceca', color: '#0f1626' }
+                    : { border: '1px solid rgba(0,206,202,0.08)', color: '#7a8a9e', background: '#0f1626' }}>
                   {f}
                 </button>
               ))}
@@ -146,7 +146,7 @@ export default function ImmersiveGallery() {
                   transition={{ delay: i * 0.08 }}>
                   <button onClick={() => setSelectedProject(p)}
                     className="group block w-full relative overflow-hidden rounded-2xl border transition-all duration-500 hover:shadow-xl text-left"
-                    style={{ borderColor: 'rgba(3,47,76,0.06)', boxShadow: '0 2px 12px rgba(3,47,76,0.04)' }}>
+                    style={{ borderColor: 'rgba(0,206,202,0.06)', boxShadow: '0 2px 12px rgba(0,0,0,0.3)' }}>
                     <div className="aspect-[4/3] relative overflow-hidden">
                       <img src={p.image} alt={p.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
@@ -162,7 +162,7 @@ export default function ImmersiveGallery() {
                     </div>
                     {/* 3D badge */}
                     <div className="absolute top-4 left-4 px-2.5 py-1 rounded-full text-xs font-bold flex items-center gap-1.5"
-                      style={{ background: 'rgba(255,255,255,0.9)', color: '#009e9b' }}>
+                      style={{ background: 'rgba(15,22,38,0.95)', color: '#00ceca' }}>
                       <Layers size={11} /> 3D
                     </div>
                   </button>
@@ -185,7 +185,7 @@ export default function ImmersiveGallery() {
       <AnimatePresence>
         {selectedProject && (
           <Suspense fallback={
-            <div className="fixed inset-0 z-[100] flex items-center justify-center" style={{ background: '#f7f9fa' }}>
+            <div className="fixed inset-0 z-[100] flex items-center justify-center" style={{ background: '#0a0e1a' }}>
               <div className="text-center">
                 <div className="w-12 h-12 rounded-full border-2 animate-spin mx-auto mb-4"
                   style={{ borderColor: '#00ceca', borderTopColor: 'transparent' }} />

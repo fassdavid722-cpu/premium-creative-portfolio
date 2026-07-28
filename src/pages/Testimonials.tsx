@@ -25,7 +25,7 @@ export default function Testimonials() {
             style={{ background: 'radial-gradient(circle, #00ceca 0%, transparent 70%)' }} />
           <div className="relative z-10">
             <div className="flex justify-center gap-1 mb-5">
-              {[...Array(5)].map((_, i) => <Star key={i} size={22} style={{ color: '#009e9b', fill: '#00ceca' }} />)}
+              {[...Array(5)].map((_, i) => <Star key={i} size={22} style={{ color: '#00ceca', fill: '#00ceca' }} />)}
             </div>
             <blockquote className="heading-serif text-2xl md:text-3xl font-medium max-w-3xl mx-auto leading-snug mb-8">
               "{testimonials[0].quote}"
@@ -36,7 +36,7 @@ export default function Testimonials() {
               <div className="text-left">
                 <p className="font-semibold text-ink">{testimonials[0].name}</p>
                 <p className="text-sm text-ink-faint">{testimonials[0].role}, {testimonials[0].company}</p>
-                <p className="text-xs mt-0.5" style={{ color: '#009e9b' }}>Hired for: {testimonials[0].service}</p>
+                <p className="text-xs mt-0.5" style={{ color: '#00ceca' }}>Hired for: {testimonials[0].service}</p>
               </div>
             </div>
           </div>
@@ -47,7 +47,7 @@ export default function Testimonials() {
             <motion.div key={t.id} {...fadeUp} transition={{ delay: i * 0.1 }}
               className="card-arch p-7 gradient-border">
               <div className="flex gap-1 mb-4">
-                {[...Array(5)].map((_, j) => <Star key={j} size={14} style={{ color: '#009e9b', fill: '#00ceca' }} />)}
+                {[...Array(5)].map((_, j) => <Star key={j} size={14} style={{ color: '#00ceca', fill: '#00ceca' }} />)}
               </div>
               <p className="text-ink-muted text-sm leading-relaxed mb-5 italic">"{t.quote}"</p>
               <div className="flex items-center gap-3">
@@ -55,7 +55,7 @@ export default function Testimonials() {
                 <div>
                   <p className="font-semibold text-ink text-sm">{t.name}</p>
                   <p className="text-xs text-ink-faint">{t.role}, {t.company}</p>
-                  <p className="text-xs mt-0.5" style={{ color: '#009e9b' }}>{t.service}</p>
+                  <p className="text-xs mt-0.5" style={{ color: '#00ceca' }}>{t.service}</p>
                 </div>
               </div>
             </motion.div>
