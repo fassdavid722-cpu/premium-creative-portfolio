@@ -16,16 +16,16 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-9 h-9 rounded-lg flex items-center justify-center font-bold text-ink text-lg" style={{ background: '#c5f74f' }}>A</div>
-              <span className="text-xl font-bold text-white">Archworks<span style={{ color: '#c5f74f' }}>.</span></span>
+              <div className="w-9 h-9 rounded-lg flex items-center justify-center font-bold text-ink text-lg" style={{ background: '#00ceca' }}>A</div>
+              <span className="text-xl font-bold text-white">Archworks<span style={{ color: '#00ceca' }}>.</span></span>
             </div>
             <p className="text-white/40 text-sm leading-relaxed mb-4 max-w-xs">
-              I design to make you <span style={{ color: '#c5f74f' }}>SPEAK</span> · <span style={{ color: '#c5f74f' }}>STAY</span> · <span style={{ color: '#c5f74f' }}>SELL</span>
+              I design to make you <span style={{ color: '#00ceca' }}>SPEAK</span> · <span style={{ color: '#00ceca' }}>STAY</span> · <span style={{ color: '#00ceca' }}>SELL</span>
             </p>
             <div className="flex gap-2">
               {socials.map(({ Icon, href, label }) => (
                 <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
-                  className="w-9 h-9 rounded-lg border border-white/10 flex items-center justify-center text-white/40 hover:text-lime hover:border-lime/40 hover:bg-lime/5 transition-all duration-300">
+                  className="w-9 h-9 rounded-lg border border-white/10 flex items-center justify-center text-white/40 hover:text-teal hover:border-lime/40 hover:bg-lime/5 transition-all duration-300">
                   <Icon size={16} />
                 </a>
               ))}
@@ -33,7 +33,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: '#c5f74f' }}>Navigate</h4>
+            <h4 className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: '#00ceca' }}>Navigate</h4>
             <ul className="space-y-2.5">
               {[{ to: '/', l: 'Home' }, { to: '/portfolio', l: 'Work' }, { to: '/services', l: 'Services' }, { to: '/about', l: 'About' }, { to: '/testimonials', l: 'Testimonials' }, { to: '/blog', l: 'Insights' }].map(x => (
                 <li key={x.to}><Link to={x.to} className="text-white/40 hover:text-white text-sm transition-colors">{x.l}</Link></li>
@@ -42,7 +42,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: '#c5f74f' }}>Let's Work</h4>
+            <h4 className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: '#00ceca' }}>Let's Work</h4>
             <div className="space-y-2 mb-5">
               <p className="text-white/40 text-sm">archdaniels101@gmail.com</p>
               <a href="https://wa.me/2348000000000" className="text-white/40 text-sm hover:text-white transition-colors">WhatsApp</a>
