@@ -16,10 +16,11 @@ import Contact from '@/pages/Contact'
 function PageWrapper({ children }: { children: React.ReactNode }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 8 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.35, ease: 'easeOut' }}
+      initial={{ opacity: 0, rotateX: -3, y: 20 }}
+      animate={{ opacity: 1, rotateX: 0, y: 0 }}
+      exit={{ opacity: 0, rotateX: 3, y: -10 }}
+      transition={{ duration: 0.28, ease: [0.34, 1.56, 0.64, 1] }}
+      style={{ transformStyle: 'preserve-3d', transformOrigin: 'top center' }}
     >
       {children}
     </motion.div>
@@ -50,7 +51,9 @@ export default function App() {
       <ScrollToTop />
       <CustomCursor />
       <Navigation />
-      <AnimatedRoutes />
+      <div style={{ perspective: '1200px' }}>
+        <AnimatedRoutes />
+      </div>
       <Footer />
     </BrowserRouter>
   )

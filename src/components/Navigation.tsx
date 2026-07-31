@@ -26,19 +26,25 @@ export default function Navigation() {
 
   return (
     <>
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? 'bg-navy-card/90 backdrop-blur-xl shadow-sm border-b' : 'bg-transparent'
-      }`} style={scrolled ? { borderColor: 'rgba(0,206,202,0.06)' } : {}}>
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? 'bg-navy/90 backdrop-blur-xl shadow-lg shadow-black/20 border-b border-white/5' : 'bg-transparent'
+      }`}>
         <nav className="container-arch flex items-center justify-between py-4">
+          {/* Logo with 3D hover */}
           <Link to="/" className="flex items-center gap-2 group">
-            <div className="w-9 h-9 rounded-lg flex items-center justify-center font-bold text-ink text-lg transition-all duration-300 group-hover:scale-110" style={{ background: '#00ceca' }}>A</div>
-            <span className="text-xl font-bold tracking-tight text-ink">Archworks<span style={{ color: '#00ceca' }}>.</span></span>
+            <motion.div
+              whileHover={{ scale: 1.1, rotateY: 15 }}
+              transition={{ duration: 0.2 }}
+              style={{ transformStyle: 'preserve-3d', background: '#00ceca' }}
+              className="w-9 h-9 rounded-lg flex items-center justify-center font-bold text-navy text-lg">A</motion.div>
+            <span className="text-xl font-bold tracking-tight text-white">Archworks<span style={{ color: '#00ceca' }}>.</span></span>
           </Link>
 
+          {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-1">
             {navLinks.map(link => (
               <NavLink key={link.to} to={link.to} end={link.to === '/'} className={({ isActive }) =>
-                `px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${isActive ? '' : 'text-ink-muted hover:text-ink hover:bg-teal/10'}`
+                `px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${isActive ? 'text-teal' : 'text-white/60 hover:text-white hover:bg-white/5'}`
               } style={({ isActive }) => isActive ? { color: '#00ceca' } : {}}>
                 {link.label}
               </NavLink>
@@ -46,10 +52,12 @@ export default function Navigation() {
           </div>
 
           <div className="flex items-center gap-3">
-            <Link to="/contact" className="hidden lg:inline-flex btn-primary text-sm py-2.5 px-5 gap-1.5">
-              Start A Project <ArrowRight size={16} />
-            </Link>
-            <button onClick={() => setOpen(!open)} className="lg:hidden p-2 text-ink" aria-label="Menu">
+            <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }} transition={{ duration: 0.15 }}>
+              <Link to="/contact" className="hidden lg:inline-flex btn-primary text-sm py-2.5 px-5 gap-1.5">
+                Start A Project <ArrowRight size={16} />
+              </Link>
+            </motion.div>
+            <button onClick={() => setOpen(!open)} className="lg:hidden p-2 text-white" aria-label="Menu">
               {open ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
@@ -59,25 +67,27 @@ export default function Navigation() {
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.2 }}
             className="fixed inset-0 z-40 flex flex-col items-center justify-center"
-            style={{ background: 'rgba(5,8,16,0.98)', backdropFilter: 'blur(20px)' }}
-          >
+            style={{ background: 'rgba(3,47,76,0.97)', backdropFilter: 'blur(20px)' }}>
             <div className="flex flex-col items-center gap-5">
               {navLinks.map((link, i) => (
                 <motion.div key={link.to}
-                  initial={{ opacity: 0, y: -16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.07 }}
-                >
-                  <NavLink to={link.to} end={link.to === '/'} className="text-3xl font-semibold text-ink-muted hover:text-ink transition-colors" style={({ isActive }) => isActive ? { color: '#00ceca' } : {}}>
+                  initial={{ opacity: 0, y: -16, rotateX: -10 }}
+                  animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                  transition={{ delay: i * 0.05, duration: 0.2 }}
+                  style={{ transformStyle: 'preserve-3d' }}>
+                  <NavLink to={link.to} end={link.to === '/'} className="text-3xl font-semibold text-white/80 hover:text-white transition-colors">
                     {link.label}
                   </NavLink>
                 </motion.div>
               ))}
-              <Link to="/contact" className="btn-primary mt-4">Start A Project</Link>
+              <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25, duration: 0.2 }}>
+                <Link to="/contact" className="btn-primary mt-4">Start A Project</Link>
+              </motion.div>
             </div>
           </motion.div>
         )}
